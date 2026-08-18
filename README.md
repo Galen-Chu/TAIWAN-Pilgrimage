@@ -34,7 +34,7 @@
 - [ ] **資料儲存與備份**：localStorage 保存，支援 JSON/GPX 匯入匯出（無後端）
 - [ ] **香客大樓資訊**：舊資料降階為廟宇屬性欄位（`lodging`），作為規劃住宿的參考
 - [ ] **語言政策調整**：介面與資料中文為主，英文命名僅用於精選落地點
-- [ ] **資料擴充**：匯入政府開放資料與策展資料（見 [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)）
+- [x] **資料擴充**：匯入政府開放資料與策展資料（全量底層 12,422 筆已產生 `data/moi-temples.js`；底圖渲染為 v1.0 範圍）
 
 決策詳情見 [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)。
 
@@ -61,13 +61,16 @@ pilgrim-map/
 │   ├── routing.js          # 路線規劃
 │   └── i18n.js             # 雙語切換
 ├── data/
-│   ├── temples.js          # 廟宇節點資料（新模型，25 筆）
-│   └── lineage.js          # 源流連結資料（首批：媽祖 10 筆）
+│   ├── temples.js          # 精選廟宇節點（策展層，25 筆）
+│   ├── lineage.js          # 源流連結資料（首批：媽祖 10 筆）
+│   ├── deities.js          # 神明名稱註冊表（原名保留 + 系統歸類）
+│   └── moi-temples.js      # 全量廟宇底層（12,422 筆，generated）
 ├── docs/
 │   ├── CONCEPT.md          # 核心概念說明
 │   ├── DATA_SOURCES.md     # 資料來源評估
 │   └── REQUIREMENTS.md     # 需求決策清單
 ├── tools/
+│   ├── import-moi-data.js  # 內政部 8203 匯入管線（node tools/import-moi-data.js）
 │   └── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
 └── README.md
 ```
@@ -94,7 +97,7 @@ pilgrim-map/
 | 階段 | 內容 | 狀態 |
 |------|------|------|
 | v0.x | 香客大樓地圖（24 間寺廟、篩選、搜尋、路線） | ✅ 完成 |
-| v0.9 | 核心概念轉向、資料模型重構、文件更新 | 🔄 進行中 |
+| v0.9 | 核心概念轉向、資料模型重構、全量匯入管線、神明名稱註冊表 | ✅ 完成（2026-08-18） |
 | v1.0 | 分層地圖 + 落地點標記 + 六大神明源流連結 | ⬜ 規劃中 |
 | v1.x | 個人進香之路（check-in、足跡、統計、匯入匯出） | ⬜ 規劃中 |
 
