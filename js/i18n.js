@@ -32,6 +32,7 @@ const translations = {
     regionCentral: "Central",
     regionSouth: "South",
     regionEast: "East",
+    regionIslands: "Islands",
 
     // Route Planning
     planRoute: "Route Planning",
@@ -95,6 +96,7 @@ const translations = {
     regionCentral: "中部",
     regionSouth: "南部",
     regionEast: "東部",
+    regionIslands: "離島",
 
     // Route Planning
     planRoute: "路線規劃",
@@ -152,7 +154,8 @@ const regionTranslationMap = {
   "North": "regionNorth",
   "Central": "regionCentral",
   "South": "regionSouth",
-  "East": "regionEast"
+  "East": "regionEast",
+  "Islands": "regionIslands"
 };
 
 /**

@@ -61,7 +61,8 @@ pilgrim-map/
 │   ├── routing.js          # 路線規劃
 │   └── i18n.js             # 雙語切換
 ├── data/
-│   └── temples.js          # 廟宇節點資料（新模型，24 筆）
+│   ├── temples.js          # 廟宇節點資料（新模型，25 筆）
+│   └── lineage.js          # 源流連結資料（首批：媽祖 10 筆）
 ├── docs/
 │   ├── CONCEPT.md          # 核心概念說明
 │   ├── DATA_SOURCES.md     # 資料來源評估

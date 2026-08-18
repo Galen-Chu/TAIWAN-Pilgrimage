@@ -19,7 +19,7 @@ function loadGlobal(filePath, varNames) {
 }
 
 const LANDING_TYPES = ['歷史登陸點', '開基廟', '祖廟', '分香子廟'];
-const REGIONS = ['North', 'Central', 'South', 'East'];
+const REGIONS = ['North', 'Central', 'South', 'East', 'Islands'];
 const RELATIONS = ['分香', '謁祖進香', '割火', '遶境', '承繼'];
 const STATUSES = ['確定', '存爭議', '待查'];
 

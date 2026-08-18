@@ -469,5 +469,22 @@ const temples = [
     },
     landingType: null,
     landingNote: null
+  },
+  {
+    id: 25,
+    nameZh: "澎湖天后宮",
+    nameEn: "Penghu Tianhou Temple",
+    mainDeity: "媽祖",
+    addressZh: "澎湖縣馬公市正義街1號",
+    phone: null,
+    website: null,
+    lat: 23.5656,
+    lng: 119.5637,
+    region: "Islands",
+    foundedYear: null,
+    history: "全台歷史最悠久的媽祖廟(相傳創建於明萬曆年間)",
+    lodging: null,
+    landingType: "開基廟",
+    landingNote: "相傳1592年(明萬曆20年)前即已建廟,為全台最古媽祖廟(確切年代待考;座標待複核)"
   }
 ];
