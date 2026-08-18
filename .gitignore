@@ -21,3 +21,6 @@ node_modules/
 # Environment Variables
 .env
 .env.local
+
+# Raw open data downloads (verification copies, not for distribution; see docs/DATA_SOURCES.md)
+data/raw/
