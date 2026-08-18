@@ -43,4 +43,4 @@
   驗證器亦內建此檢查。
 - 待辦:澎湖天后宮座標待複核;lineage.js 出處待補具體文獻;
   全量底層 moi-temples.js 尚未接入 UI(v1.0 分層渲染時處理,D8 效能選項屆時一併決定)。
-- repo 曾多次改名(現為 `Galen-Chu/TAIWAN-pilgrimage`),本地 remote 已同步,勿改回舊 URL。
+- repo 曾多次改名(現為 `Galen-Chu/TAIWAN-Pilgrimage`),本地 remote 已同步,勿改回舊 URL。
