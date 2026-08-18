@@ -1,4 +1,4 @@
-// Taiwan Pilgrim Building Map - Routing Module
+// Taiwan Pilgrim Map - Routing Module
 
 /**
  * Routing control instance
@@ -201,7 +201,7 @@ function populateRouteDropdowns(temples) {
 
   // Add temple options
   temples.forEach(temple => {
-    const name = lang === 'zh' ? temple.nameZh : temple.nameEn;
+    const name = lang === 'zh' ? temple.nameZh : (temple.nameEn || temple.nameZh);
     const option = `<option value="${temple.id}">${name}</option>`;
     startSelect.innerHTML += option;
     endSelect.innerHTML += option;

@@ -1,4 +1,4 @@
-// Taiwan Pilgrim Building Map - Map Module
+// Taiwan Pilgrim Map - Map Module
 
 /**
  * Map instance
@@ -108,25 +108,33 @@ function createDeityIcon(deity) {
  */
 function createPopupContent(temple) {
   const lang = window.i18n.getCurrentLanguage();
-  const name = lang === 'zh' ? temple.nameZh : temple.nameEn;
-  const address = lang === 'zh' ? temple.addressZh : temple.addressEn;
-  const description = lang === 'zh' ? temple.description.zh : temple.description.en;
-  const deityText = window.i18n.getDeityText(temple.deity);
+  const name = lang === 'zh' ? temple.nameZh : (temple.nameEn || temple.nameZh);
+  const address = lang === 'zh' ? temple.addressZh : (temple.addressEn || temple.addressZh);
+  const deityText = window.i18n.getDeityText(temple.mainDeity);
   const regionText = window.i18n.getRegionText(temple.region);
 
-  const bookText = lang === 'zh' ? '訂房預約' : 'Book Room';
+  const siteText = lang === 'zh' ? '官方網站' : 'Website';
   const callText = lang === 'zh' ? '撥打電話' : 'Call';
   const detailsText = lang === 'zh' ? '查看詳情' : 'View Details';
   const addressLabel = lang === 'zh' ? '地址' : 'Address';
   const deityLabel = lang === 'zh' ? '主神' : 'Deity';
 
+  // Landing-point badge (curated deity landing sites only)
+  const landingBadge = temple.landingType
+    ? `<div style="display:inline-block;background-color:#C8102E;color:#fff;font-size:12px;padding:2px 8px;border-radius:10px;margin:2px 0 6px 0;">${temple.landingType}</div>`
+    : '';
+
+  const lodgingInfo = temple.lodging
+    ? `<div class="popup-info"><strong>${window.i18n.getText('lodgingLabel')}:</strong> ${temple.lodging.nameZh}${temple.lodging.noteZh ? '(' + temple.lodging.noteZh + ')' : ''}</div>`
+    : '';
+
   let actionButtons = '';
 
-  // Add booking button if website exists
+  // Add website button if exists
   if (temple.website) {
     actionButtons += `
       <a href="${temple.website}" target="_blank" rel="noopener" class="popup-btn popup-btn-book">
-        🏨 ${bookText}
+        🌐 ${siteText}
       </a>
     `;
   }
@@ -142,16 +150,17 @@ function createPopupContent(temple) {
 
   return `
     <div class="popup-content">
-      <div class="popup-temple-name">${temple.nameZh}</div>
-      <div class="popup-temple-name-en">${temple.nameEn}</div>
+      <div class="popup-temple-name">${name}</div>
+      ${temple.nameEn && lang === 'zh' ? `<div class="popup-temple-name-en">${temple.nameEn}</div>` : ''}
+      ${landingBadge}
       <div class="popup-info">
         <strong>${addressLabel}:</strong><br>
-        ${temple.addressZh}<br>
-        ${temple.addressEn}
+        ${address}
       </div>
       <div class="popup-info">
         <strong>${deityLabel}:</strong> ${deityText}
       </div>
+      ${lodgingInfo}
       <div class="popup-actions">
         ${actionButtons}
         <button class="popup-btn popup-btn-details" onclick="showTempleModal(${temple.id})">
@@ -168,7 +177,7 @@ function createPopupContent(temple) {
  * @returns {object} Leaflet marker
  */
 function createMarker(temple) {
-  const icon = createDeityIcon(temple.deity);
+  const icon = createDeityIcon(temple.mainDeity);
   const marker = L.marker([temple.lat, temple.lng], { icon });
 
   // Bind popup
@@ -214,24 +223,29 @@ function showTempleModal(templeId) {
   }
 
   const lang = window.i18n.getCurrentLanguage();
-  const name = lang === 'zh' ? temple.nameZh : temple.nameEn;
-  const address = lang === 'zh' ? temple.addressZh : temple.addressEn;
-  const description = lang === 'zh' ? temple.description.zh : temple.description.en;
-  const deityText = window.i18n.getDeityText(temple.deity);
+  const name = lang === 'zh' ? temple.nameZh : (temple.nameEn || temple.nameZh);
+  const address = lang === 'zh' ? temple.addressZh : (temple.addressEn || temple.addressZh);
+  const deityText = window.i18n.getDeityText(temple.mainDeity);
   const regionText = window.i18n.getRegionText(temple.region);
 
-  const bookText = lang === 'zh' ? '🏨 訂房預約' : '🏨 Book Room';
+  const siteText = lang === 'zh' ? '🌐 官方網站' : '🌐 Website';
   const callText = lang === 'zh' ? '📞 撥打電話' : '📞 Call';
+
+  // Landing-point badge (curated deity landing sites only)
+  const landingBadge = temple.landingType
+    ? `<p style="margin:4px 0 12px 0;"><span style="display:inline-block;background-color:#C8102E;color:#fff;font-size:13px;padding:3px 10px;border-radius:12px;">${temple.landingType}</span></p>`
+    : '';
 
   const modalBody = document.getElementById('modal-body');
   modalBody.innerHTML = `
-    <h2 class="modal-temple-name">${temple.nameZh}</h2>
-    <p class="modal-temple-name-en">${temple.nameEn}</p>
+    <h2 class="modal-temple-name">${name}</h2>
+    ${temple.nameEn && lang === 'zh' ? `<p class="modal-temple-name-en">${temple.nameEn}</p>` : ''}
+    ${landingBadge}
 
     ${temple.website ? `
     <div class="modal-booking-section">
       <a href="${temple.website}" target="_blank" rel="noopener" class="btn-book-room">
-        ${bookText}
+        ${siteText}
       </a>
     </div>
     ` : ''}
@@ -246,8 +260,15 @@ function showTempleModal(templeId) {
 
     <div class="modal-section">
       <strong>${window.i18n.getText('address')}</strong>
-      <p>${temple.addressZh}<br>${temple.addressEn}</p>
+      <p>${address}</p>
     </div>
+
+    ${temple.foundedYear ? `
+    <div class="modal-section">
+      <strong>${window.i18n.getText('foundedYearLabel')}</strong>
+      <p>${temple.foundedYear}</p>
+    </div>
+    ` : ''}
 
     ${temple.phone ? `
     <div class="modal-section">
@@ -273,9 +294,23 @@ function showTempleModal(templeId) {
       <p>${regionText}</p>
     </div>
 
+    ${temple.landingType ? `
     <div class="modal-section">
-      <strong>${window.i18n.getText('description')}</strong>
-      <p class="modal-description">${description}</p>
+      <strong>${window.i18n.getText('landingLabel')}</strong>
+      <p>${temple.landingType}${temple.landingNote ? ' — ' + temple.landingNote : ''}</p>
+    </div>
+    ` : ''}
+
+    ${temple.lodging ? `
+    <div class="modal-section">
+      <strong>${window.i18n.getText('lodgingLabel')}</strong>
+      <p>${temple.lodging.nameZh}${temple.lodging.noteZh ? '(' + temple.lodging.noteZh + ')' : ''}</p>
+    </div>
+    ` : ''}
+
+    <div class="modal-section">
+      <strong>${window.i18n.getText('historyLabel')}</strong>
+      <p class="modal-description">${temple.history || ''}</p>
     </div>
 
     <button class="btn-add-route" onclick="addTempleToRoute(${temple.id})">
@@ -318,7 +353,7 @@ function filterMarkers(selectedDeities, selectedRegions) {
   // Filter and add back matching markers
   const filteredMarkers = markers.filter(marker => {
     const temple = marker.templeData;
-    const deityMatch = selectedDeities.length === 0 || selectedDeities.includes(temple.deity);
+    const deityMatch = selectedDeities.length === 0 || selectedDeities.includes(temple.mainDeity);
     const regionMatch = selectedRegions.length === 0 || selectedRegions.includes(temple.region);
     return deityMatch && regionMatch;
   });

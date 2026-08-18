@@ -1,27 +1,27 @@
-// Taiwan Pilgrim Building Map - Main Application Controller
+// Taiwan Pilgrim Map - Main Application Controller
 
 /**
  * Main Application Initialization
  * Coordinates all modules and handles global event listeners
  */
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Initializing Taiwan Pilgrim Building Map...');
+  console.log('Initializing Taiwan Pilgrim Map...');
 
   try {
     // 1. Initialize internationalization first (needed by other modules)
     window.i18n.init();
 
     // 2. Initialize map and create markers
-    const map = window.mapModule.init(pilgrimBuildings);
+    const map = window.mapModule.init(temples);
 
     // 3. Initialize filters
-    window.filtersModule.init(pilgrimBuildings);
+    window.filtersModule.init(temples);
 
     // 4. Initialize search
-    window.searchModule.init(pilgrimBuildings);
+    window.searchModule.init(temples);
 
     // 5. Initialize routing
-    window.routingModule.init(map, pilgrimBuildings);
+    window.routingModule.init(map, temples);
 
     // 6. Setup global event listeners
     setupGlobalEventListeners();

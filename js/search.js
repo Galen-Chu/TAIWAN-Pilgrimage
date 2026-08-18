@@ -1,4 +1,4 @@
-// Taiwan Pilgrim Building Map - Search Module
+// Taiwan Pilgrim Map - Search Module
 
 /**
  * Search input debounce timer
@@ -20,20 +20,17 @@ function searchTemples(query, temples) {
   const lang = window.i18n.getCurrentLanguage();
 
   return temples.filter(temple => {
-    // Search in both Chinese and English names
+    // Search in both Chinese and English names (English only on curated points)
     const nameMatch =
-      temple.nameZh.toLowerCase().includes(searchTerm) ||
-      temple.nameEn.toLowerCase().includes(searchTerm);
+      (temple.nameZh || '').toLowerCase().includes(searchTerm) ||
+      (temple.nameEn || '').toLowerCase().includes(searchTerm);
 
     // Also search in addresses
     const addressMatch =
-      temple.addressZh.toLowerCase().includes(searchTerm) ||
-      temple.addressEn.toLowerCase().includes(searchTerm);
+      (temple.addressZh || '').toLowerCase().includes(searchTerm) ||
+      (temple.addressEn || '').toLowerCase().includes(searchTerm);
 
-    // Also search in temple name
-    const templeMatch = temple.temple.toLowerCase().includes(searchTerm);
-
-    return nameMatch || addressMatch || templeMatch;
+    return nameMatch || addressMatch;
   });
 }
 
@@ -54,8 +51,8 @@ function showSearchResults(results) {
 
   resultsContainer.innerHTML = results.map(temple => `
     <div class="search-result-item" data-temple-id="${temple.id}">
-      <div class="temple-name">${lang === 'zh' ? temple.nameZh : temple.nameEn}</div>
-      <div class="temple-region">${window.i18n.getDeityText(temple.deity)} · ${window.i18n.getRegionText(temple.region)}</div>
+      <div class="temple-name">${lang === 'zh' ? temple.nameZh : (temple.nameEn || temple.nameZh)}</div>
+      <div class="temple-region">${window.i18n.getDeityText(temple.mainDeity)} · ${window.i18n.getRegionText(temple.region)}</div>
     </div>
   `).join('');
 
