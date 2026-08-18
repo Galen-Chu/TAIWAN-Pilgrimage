@@ -103,9 +103,64 @@ if (fs.existsSync(lineagePath)) {
   });
 }
 
+// ---------- deities registry (optional) ----------
+const deitiesPath = path.join(dataDir, 'deities.js');
+let registryCount = 0;
+if (fs.existsSync(deitiesPath)) {
+  const { deityRegistry } = loadGlobal(deitiesPath, ['deityRegistry']);
+  registryCount = deityRegistry.length;
+  const canonicals = new Set();
+  const aliasOwner = new Map();
+  deityRegistry.forEach(e => {
+    const loc = `deities[${e.canonical ?? '?'}]`;
+    if (!e.canonical) { errors.push(`${loc}: 缺 canonical`); return; }
+    if (canonicals.has(e.canonical)) errors.push(`${loc}: canonical 重複`);
+    canonicals.add(e.canonical);
+    if (!e.matchPattern) {
+      errors.push(`${loc}: 缺 matchPattern`);
+    } else {
+      try { new RegExp(e.matchPattern); } catch (err) { errors.push(`${loc}: matchPattern 無效 (${err.message})`); }
+    }
+    (e.aliases || []).forEach(a => {
+      if (aliasOwner.has(a) && aliasOwner.get(a) !== e.canonical) {
+        errors.push(`${loc}: 別名 "${a}" 與 "${aliasOwner.get(a)}" 重複`);
+      }
+      aliasOwner.set(a, e.canonical);
+    });
+  });
+  temples.forEach(t => {
+    if (!canonicals.has(t.mainDeity)) {
+      warnings.push(`temples[id=${t.id}]: mainDeity "${t.mainDeity}" 不在註冊表(將以原名自成一組)`);
+    }
+  });
+}
+
+// ---------- moi-temples (generated base layer, optional) ----------
+const moiPath = path.join(dataDir, 'moi-temples.js');
+let moiCount = 0;
+if (fs.existsSync(moiPath)) {
+  const { moiTemples } = loadGlobal(moiPath, ['moiTemples']);
+  moiCount = moiTemples.length;
+  let structural = 0, coordRange = 0, badRegion = 0, noCoord = 0;
+  moiTemples.forEach(t => {
+    // mainDeityRaw 允許空字串(源頭未記載,依 D9 原名保留原則不補寫)
+    if (!t.nameZh || !Array.isArray(t.deitySystems) || !t.primarySystem) structural++;
+    if (t.lat == null || t.lng == null) noCoord++;
+    else if (t.lat < 21 || t.lat > 26.6 || t.lng < 118 || t.lng > 122.1) coordRange++;
+    if (t.region != null && !REGIONS.includes(t.region)) badRegion++;
+  });
+  if (structural) errors.push(`moi-temples: ${structural} 筆結構不完整`);
+  if (coordRange) errors.push(`moi-temples: ${coordRange} 筆座標超出台灣範圍`);
+  if (badRegion) errors.push(`moi-temples: ${badRegion} 筆 region 非預期值`);
+  if (moiCount === 0) errors.push('moi-temples: 0 筆(請重新執行 node tools/import-moi-data.js)');
+  if (noCoord) console.log(`moi-temples: ${noCoord} 筆無座標(來源即缺,可接受)`);
+}
+
 // ---------- report ----------
 console.log(`temples: ${temples.length} 筆`);
 if (lineageCount) console.log(`lineages: ${lineageCount} 筆`);
+if (registryCount) console.log(`deities registry: ${registryCount} 系統`);
+if (moiCount) console.log(`moi-temples: ${moiCount} 筆(全量底層,generated)`);
 warnings.forEach(w => console.warn(`  [warn] ${w}`));
 if (errors.length) {
   errors.forEach(e => console.error(`  [error] ${e}`));
