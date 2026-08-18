@@ -1,4 +1,4 @@
-// Taiwan Pilgrim Building Map - Filters Module
+// Taiwan Pilgrim Map - Filters Module
 
 /**
  * Filter state
@@ -12,7 +12,7 @@ let selectedRegions = [];
  * @returns {object} Object with deities and regions arrays
  */
 function extractFilterOptions(temples) {
-  const deities = [...new Set(temples.map(t => t.deity))];
+  const deities = [...new Set(temples.map(t => t.mainDeity))];
   const regions = [...new Set(temples.map(t => t.region))];
 
   // Count occurrences
@@ -20,7 +20,7 @@ function extractFilterOptions(temples) {
   const regionCounts = {};
 
   temples.forEach(temple => {
-    deityCounts[temple.deity] = (deityCounts[temple.deity] || 0) + 1;
+    deityCounts[temple.mainDeity] = (deityCounts[temple.mainDeity] || 0) + 1;
     regionCounts[temple.region] = (regionCounts[temple.region] || 0) + 1;
   });
 

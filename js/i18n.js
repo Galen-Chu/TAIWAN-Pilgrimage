@@ -1,4 +1,4 @@
-// Taiwan Pilgrim Building Map - Internationalization (i18n) Module
+// Taiwan Pilgrim Map - Internationalization (i18n) Module
 
 /**
  * Translation data for bilingual support (Chinese/English)
@@ -6,7 +6,7 @@
 const translations = {
   en: {
     // Header
-    title: "Taiwan Pilgrim Building Map",
+    title: "Taiwan Pilgrim Map",
     langToggle: "中文",
 
     // Search
@@ -52,6 +52,10 @@ const translations = {
     addToRoute: "Add to Route",
     addedToRoute: "Added to Route",
     viewDetails: "View Details",
+    foundedYearLabel: "Founded",
+    lodgingLabel: "Pilgrim Lodging",
+    landingLabel: "Landing Point",
+    historyLabel: "History",
 
     // Footer
     mapData: "Map Data:",
@@ -65,7 +69,7 @@ const translations = {
 
   zh: {
     // Header
-    title: "台灣香客大樓地圖",
+    title: "台灣進香地圖",
     langToggle: "English",
 
     // Search
@@ -111,6 +115,10 @@ const translations = {
     addToRoute: "加入路線",
     addedToRoute: "已加入路線",
     viewDetails: "查看詳情",
+    foundedYearLabel: "創建",
+    lodgingLabel: "香客大樓",
+    landingLabel: "落地屬性",
+    historyLabel: "沿革",
 
     // Footer
     mapData: "地圖資料:",
@@ -124,7 +132,7 @@ const translations = {
 };
 
 /**
- * Deity name mapping (from data.deity to translation key)
+ * Deity name mapping (from data.mainDeity to translation key)
  */
 const deityTranslationMap = {
   "媽祖": "deityMazu",
@@ -219,7 +227,7 @@ function updateUIText() {
   });
 
   // Update document title
-  document.title = `${getText('title')} | Taiwan Pilgrim Building Map`;
+  document.title = getText('title');
 }
 
 /**
