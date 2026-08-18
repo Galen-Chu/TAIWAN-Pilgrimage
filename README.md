@@ -1,120 +1,117 @@
-# 台灣香客大樓地圖 | Taiwan Pilgrim Building Map
+# 台灣進香地圖 | Taiwan Pilgrim Map
 
-A bilingual interactive map application for exploring Taiwan's pilgrim buildings (香客大樓) and temples.
+> 標記神靈在台灣的落地點，連結廟宇之間的源流，並記錄你自己的進香之路。
 
-## Features
+本專案原為「台灣香客大樓地圖」，自 2026-08 起轉向新的核心概念：從「住宿定位」走向「信仰地圖」——以台灣廟宇為節點、以神靈源流為連結、以個人進香足跡為縱軸的互動地圖。
 
-- **Interactive Map**: View 24 pilgrim buildings across Taiwan on an interactive map
-- **Filtering**: Filter temples by deity type (Mazu, Buddhist, etc.) and region (North, Central, South, East)
-- **Search**: Search temples by name or address in both Chinese and English
-- **Bilingual Support**: Toggle between Chinese (中文) and English interface
-- **Route Planning**: Plan routes between temples with distance and estimated travel time
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
+*A bilingual (中文/English) interactive map. Formerly the "Taiwan Pilgrim Building Map", pivoting toward a belief-oriented map of temples, deity lineages, and personal pilgrimage journeys.*
 
-## Technology Stack
+## 核心概念
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Map Library**: Leaflet.js with OpenStreetMap tiles
-- **Routing**: Leaflet Routing Machine with OSRM
-- **No build tools required**: Pure static files
+地圖由三層構成，用「連結」串起來：
 
-## Project Structure
+1. **廟宇節點** — 全台廟宇基本資訊（名稱、主祀神、地址、座標、創建年代等）。
+2. **神���落地點與源流連結** — 標記神靈在台灣「落地生根」的具體位置（開基廟、祖廟、歷史登陸點等），並以源流連結（分香、謁祖進香、遶境）呈現廟宇之間的傳承關係。
+3. **個人進香之路** — 記錄自己走過的廟宇，連成屬於自己的進香足跡與統計。
+
+詳細說明見 [docs/CONCEPT.md](docs/CONCEPT.md)。
+
+## 現有功能（香客大樓時期已實作）
+
+- **互動地圖**：Leaflet.js + OpenStreetMap，目前收錄 24 間寺廟種子資料
+- **篩選**：依主祀神（媽祖、五府千歲、保生大帝、關聖帝君、呂洞賓、佛教、���音菩薩、土地公）與區域（北/中/南/東）篩選
+- **搜尋**：中英文廟名與地址搜尋
+- **雙語介面**：中文/英文切換
+- **路線規劃**：OSRM 路線規劃，顯示距離與預估時間
+- **響應式設計**：桌機、平板、手機皆可用
+
+## 規劃功能（核心概念轉向後，需求已定案 2026-08-18）
+
+- [ ] **分層地圖**：全量立案廟宇為淺色底圖 + 精選落地點（開基廟、祖廟、歷史登陸點）強調圖層
+- [ ] **源流連結**：分香/謁祖關係線；優先建置**媽祖、關聖帝君、玉皇、觀音、地藏、阿彌陀佛**六大系統
+- [ ] **進香 check-in**：記錄參拜（日期、備註），累積個人史
+- [ ] **進香足跡**：將參拜紀錄連成路線，統計走訪廟數、神明涵蓋範圍
+- [ ] **資料儲存與備份**：localStorage 保存，支援 JSON/GPX 匯入匯出（無後端）
+- [ ] **香客大樓資訊**：舊資料降階為廟宇屬性欄位（`lodging`），作為規劃住宿的參考
+- [ ] **語言政策調整**：介面與資料中文為主，英文命名僅用於精選落地點
+- [ ] **資料擴充**：匯入政府開放資料與策展資料（見 [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)）
+
+決策詳情見 [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)。
+
+## 技術堆疊
+
+- **前端**：HTML5、CSS3、JavaScript（ES6+）
+- **地圖**：Leaflet.js + OpenStreetMap 圖磚
+- **路線**：Leaflet Routing Machine + OSRM
+- **無建置工具**：純靜態檔案
+
+## 專案結構
 
 ```
 pilgrim-map/
-├── index.html              # Main HTML file
+├── index.html              # 主頁面
 ├── css/
-│   ├── styles.css         # Main stylesheet
-│   └── responsive.css     # Mobile responsive styles
+│   ├── styles.css          # 主要樣式
+│   └── responsive.css      # 響應式樣式
 ├── js/
-│   ├── app.js             # Main application controller
-│   ├── map.js             # Map initialization and markers
-│   ├── filters.js         # Filtering functionality
-│   ├── search.js          # Search functionality
-│   ├── routing.js         # Route planning
-│   └── i18n.js            # Internationalization
+│   ├── app.js              # 主控制器
+│   ├── map.js              # 地圖初始化與標記
+│   ├── filters.js          # 篩選功能
+│   ├── search.js           # 搜尋功能
+│   ├── routing.js          # 路線規劃
+│   └── i18n.js             # 雙語切換
 ├── data/
-│   └── pilgrim-data.js    # Temple data
+│   └── pilgrim-data.js     # 種子資料（24 筆，待依新資料模型重構）
+├── docs/
+│   ├── CONCEPT.md          # 核心概念說明
+│   ├── DATA_SOURCES.md     # 資料來源評估
+│   └── REQUIREMENTS.md     # 需求決策清單
 └── README.md
 ```
 
-## Getting Started
+## 本機執行
 
-### Running Locally
-
-1. Navigate to the project directory
-2. Start a local web server:
+1. 進入專案目錄
+2. 啟動本機伺服器：
    ```bash
    python -m http.server 8080
    ```
-3. Open your browser and visit: `http://localhost:8080`
+3. 瀏覽器開啟 `http://localhost:8080`
 
-### Deployment
+## 部署
 
-This is a static website that can be deployed to any web hosting service:
+純靜態網站，可部署至：
 
-- **GitHub Pages**: Push to GitHub and enable Pages in repository settings
-- **Netlify**: Drag and drop the folder to Netlify
-- **Any web server**: Upload files via FTP
+- **GitHub Pages**：Push 後在 repo 設定開啟 Pages
+- **Netlify**：拖放資料夾即可
+- **任何網頁伺服器**
 
-## Features in Detail
+## Roadmap
 
-### Temple Information
+| 階段 | 內容 | 狀態 |
+|------|------|------|
+| v0.x | 香客大樓地圖（24 間寺廟、篩選、搜尋、路線） | ✅ 完成 |
+| v0.9 | 核心概念轉向、資料模型重構、文件更新 | ��� 進行中 |
+| v1.0 | 分層地圖 + 落地點標記 + 六大神明源流連結 | ⬜ 規劃中 |
+| v1.x | 個人進香之路（check-in、足跡、統計、匯入匯出） | ⬜ 規劃中 |
 
-Each temple entry includes:
-- Bilingual names (Chinese/English)
-- Address in both languages
-- GPS coordinates
-- Deity type
-- Region classification
-- Phone number and website
-- Description
+## 資料來源
 
-### Deity Categories
+候選資料來源（政府開放資料、OSM、Wikidata、宗教百景等）與評估，見 [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md)。
 
-- 媽祖 (Mazu) - 12 temples
-- 五府千歲 (Wang Ye/Five Princes) - 2 temples
-- 保生大帝 (Baosheng Dadi) - 2 temples
-- 關聖帝君 (Guan Di) - 2 temples
-- 呂洞賓 (Lu Dongbin) - 1 temple
-- 佛教 (Buddhist) - 3 temples
-- 觀音菩薩 (Guanyin) - 1 temple
-- 土地公 (Earth God/Tudigong) - 2 temples
+## 參與貢獻
 
-### Regions
-
-- North (北部)
-- Central (中部)
-- South (南部)
-- East (東部)
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile Chrome (Android)
-- Mobile Safari (iOS)
-
-## Contributing
-
-Feel free to contribute by:
-- Adding more temples to the dataset
-- Improving translations
-- Reporting bugs
-- Suggesting new features
+- 新增或校正廟宇資料與源流關係
+- 協助中英文翻譯
+- 回報 bug、建議功能
 
 ## Credits
 
 - Map Data: [OpenStreetMap](https://www.openstreetmap.org)
 - Routing: [OSRM](http://project-osrm.org/)
 - Map Library: [Leaflet.js](https://leafletjs.com/)
+- Open Data: [政府資料開放平臺](https://data.gov.tw)
 
 ## License
 
 MIT License
-
----
-
-台灣香客大樓地圖 - 探索台灣宗教文化的好幫手
