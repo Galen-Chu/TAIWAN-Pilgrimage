@@ -347,6 +347,9 @@ function initLayeredMap() {
     '媽祖源流連結': lineageGroup
   }, { collapsed: false, position: 'topright' }).addTo(map);
 
+  // 源流連結預設開啟(僅加入 control 不會自動顯示)
+  lineageGroup.addTo(map);
+
   // 首次開啟「全量廟宇」圖層時,動態載入 data/moi-temples.js
   map.on('overlayadd', function(e) {
     if (e.layer === baseCluster && !window.baseLayerModule.isLoaded()) {
