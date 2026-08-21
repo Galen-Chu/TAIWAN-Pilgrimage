@@ -26,6 +26,9 @@ const translations = {
     deityBuddhist: "Buddhist",
     deityGuanyin: "Guanyin",
     deityTudigong: "Earth God (Tudigong)",
+    deityYuhuang: "Jade Emperor",
+    deityDizang: "Ksitigarbha",
+    deityAmitabha: "Amitabha",
 
     // Regions
     regionNorth: "North",
@@ -90,6 +93,9 @@ const translations = {
     deityBuddhist: "佛教",
     deityGuanyin: "觀音菩薩",
     deityTudigong: "土地公",
+    deityYuhuang: "玉皇大帝",
+    deityDizang: "地藏菩薩",
+    deityAmitabha: "阿彌陀佛",
 
     // Regions
     regionNorth: "北部",
@@ -144,7 +150,10 @@ const deityTranslationMap = {
   "呂洞賓": "deityLudongbin",
   "佛教": "deityBuddhist",
   "觀音菩薩": "deityGuanyin",
-  "土地公": "deityTudigong"
+  "土地公": "deityTudigong",
+  "玉皇大帝": "deityYuhuang",
+  "地藏菩薩": "deityDizang",
+  "阿彌陀佛": "deityAmitabha"
 };
 
 /**

@@ -19,6 +19,36 @@ const OUT_PATH = path.join(ROOT, 'data', 'moi-temples.js');
 const REPORT_PATH = path.join(ROOT, 'data', 'raw', 'deity-names-report.tsv');
 const SOURCE_URL = 'https://religion.moi.gov.tw/Report/temple.xml';
 
+// ---------- 座標覆寫表(內政部登記點與實際位置不符者,經 OSM 校正) ----------
+const COORD_OVERRIDES = [
+  {
+    matchName: "南山福德宮",   // 烘爐地南山福德宮(新北中和):登記點偏移約 800m
+    matchCounty: "新北市",
+    lat: 24.971837, lng: 121.49756,
+    note: "OSM 校正(2026-08-21)"
+  },
+  {
+    matchName: "龍山寺",       // 鹿港龍山寺:來源資料缺座標(508 筆之一),以 OSM 補
+    matchCounty: "彰化縣",
+    lat: 24.050449, lng: 120.43545,
+    note: "OSM 補值(2026-08-21)"
+  }
+];
+
+function applyCoordOverrides(records) {
+  let applied = 0;
+  for (const o of COORD_OVERRIDES) {
+    for (const r of records) {
+      if (r.nameZh.includes(o.matchName) && r.county.replace(/^臺/, '台') === o.matchCounty) {
+        r.x = String(o.lng);
+        r.y = String(o.lat);
+        applied++;
+      }
+    }
+  }
+  return applied;
+}
+
 // ---------- 縣市 → 區域(行政區欄位,臺/台皆有) ----------
 const COUNTY_REGION = {
   '台北市': 'North', '新北市': 'North', '基隆市': 'North', '桃園市': 'North', '桃園縣': 'North',
@@ -100,6 +130,9 @@ function classify(mainDeityRaw, registry) {
   const registry = loadRegistry();
   const records = parseRecords(xml);
   if (records.length === 0) throw new Error('解析到 0 筆資料,請檢查 XML 結構');
+
+  const overridesApplied = applyCoordOverrides(records);
+  if (overridesApplied) console.log(`座標覆寫: ${overridesApplied} 筆(COORD_OVERRIDES)`);
 
   const out = [];
   const nameStats = new Map(); // mainDeityRaw -> { count, systems }

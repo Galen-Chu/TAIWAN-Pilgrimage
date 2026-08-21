@@ -85,7 +85,10 @@ function createDeityIcon(deity) {
     "呂洞賓": "#F39C12",        // Orange for Lu Dongbin
     "佛教": "#9B59B6",          // Purple for Buddhist
     "觀音菩薩": "#E91E63",      // Pink for Guanyin
-    "土地公": "#8D6E63"         // Brown for Earth God
+    "土地公": "#8D6E63",        // Brown for Earth God
+    "玉皇大帝": "#F1C40F",      // Gold for Jade Emperor
+    "地藏菩薩": "#7E57C2",      // Violet for Ksitigarbha
+    "阿彌陀佛": "#26A69A"       // Teal for Amitabha
   };
 
   const color = deityColors[deity] || "#C8102E";
@@ -344,7 +347,7 @@ function initLayeredMap() {
   L.control.layers(null, {
     '精選廟宇': markerCluster,
     '全量廟宇(12,422 筆,首次開啟需載入)': baseCluster,
-    '媽祖源流連結': lineageGroup
+    '源流連結(媽祖/觀音)': lineageGroup
   }, { collapsed: false, position: 'topright' }).addTo(map);
 
   // 源流連結預設開啟(僅加入 control 不會自動顯示)
