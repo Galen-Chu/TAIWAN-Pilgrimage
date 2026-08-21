@@ -64,8 +64,9 @@ temples.forEach(t => {
 const lineagePath = path.join(dataDir, 'lineage.js');
 let lineageCount = 0;
 if (fs.existsSync(lineagePath)) {
-  const { lineages } = loadGlobal(lineagePath, ['lineages']);
+  const { lineages, externalNodes } = loadGlobal(lineagePath, ['lineages', 'externalNodes']);
   lineageCount = lineages.length;
+  const externalCoords = new Set((externalNodes || []).map(n => n.name));
   const seenIds = new Set();
 
   lineages.forEach((l, i) => {
@@ -89,6 +90,9 @@ if (fs.existsSync(lineagePath)) {
     if (!Number.isInteger(l.toTempleId) || !ids.has(l.toTempleId)) {
       errors.push(`${loc}: toTempleId ${l.toTempleId} 不存在於 temples`);
       return;
+    }
+    if (hasFromExt && !externalCoords.has(l.fromExternalName)) {
+      warnings.push(`${loc}: 外部源頭 "${l.fromExternalName}" 缺座標(externalNodes),源流線無法繪製`);
     }
     if (l.fromTempleId === l.toTempleId) errors.push(`${loc}: 不可自我連結`);
     if (!RELATIONS.includes(l.relation)) errors.push(`${loc}: 未知 relation "${l.relation}"`);

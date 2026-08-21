@@ -332,6 +332,37 @@ function closeTempleModal() {
 }
 
 /**
+ * Initialize layered map controls (v1.0)
+ * - 精選廟宇:策展層(預設開啟)
+ * - 全量廟宇:內政部 8203 底圖,首次開啟才載入資料檔(D8 延遲載入)
+ * - 媽祖源流連結:分香/謁祖/遶境關係線(預設開啟)
+ */
+function initLayeredMap() {
+  const baseCluster = window.baseLayerModule.getCluster();
+  const lineageGroup = window.lineageLayerModule.build(templeData);
+
+  L.control.layers(null, {
+    '精選廟宇': markerCluster,
+    '全量廟宇(12,422 筆,首次開啟需載入)': baseCluster,
+    '媽祖源流連結': lineageGroup
+  }, { collapsed: false, position: 'topright' }).addTo(map);
+
+  // 源流連結預設開啟(僅加入 control 不會自動顯示)
+  lineageGroup.addTo(map);
+
+  // 首次開啟「全量廟宇」圖層時,動態載入 data/moi-temples.js
+  map.on('overlayadd', function(e) {
+    if (e.layer === baseCluster && !window.baseLayerModule.isLoaded()) {
+      window.baseLayerModule.ensureLoaded(function() {
+        const selectedDeities = window.filtersModule ? window.filtersModule.getSelectedDeities() : [];
+        const selectedRegions = window.filtersModule ? window.filtersModule.getSelectedRegions() : [];
+        window.baseLayerModule.applyFilter(selectedDeities, selectedRegions);
+      });
+    }
+  });
+}
+
+/**
  * Update marker popups when language changes
  */
 function updateMarkerPopups() {
@@ -359,6 +390,11 @@ function filterMarkers(selectedDeities, selectedRegions) {
   });
 
   markerCluster.addLayers(filteredMarkers);
+
+  // v1.0:全量底圖同步套用篩選(未載入時為 no-op)
+  if (window.baseLayerModule) {
+    window.baseLayerModule.applyFilter(selectedDeities, selectedRegions);
+  }
 
   console.log(`Filtered to ${filteredMarkers.length} markers`);
 }
@@ -403,6 +439,9 @@ function getAllMarkers() {
 function initMapModule(temples) {
   initMap();
   createAllMarkers(temples);
+
+  // v1.0 分層地圖:精選層 / 全量底圖 / 媽祖源流連結
+  initLayeredMap();
 
   // Set up modal close handlers
   const modalClose = document.getElementById('modal-close');
