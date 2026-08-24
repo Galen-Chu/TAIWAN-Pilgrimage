@@ -75,7 +75,7 @@ function initMap() {
  * @param {string} deity - Deity name
  * @returns {object} Leaflet icon
  */
-function createDeityIcon(deity) {
+function createDeityIcon(deity, visited) {
   // Icon colors based on deity type
   const deityColors = {
     "媽祖": "#FF6B6B",          // Red-pink for Mazu
@@ -95,12 +95,20 @@ function createDeityIcon(deity) {
 
   return L.divIcon({
     className: 'custom-div-icon',
-    html: `<div class="marker-pin" style="background-color: ${color};">
+    html: `<div class="marker-pin${visited ? ' visited' : ''}" style="background-color: ${color};">
              <i class="fas fa-place-of-worship"></i>
            </div>`,
     iconSize: [30, 42],
     iconAnchor: [15, 42],
     popupAnchor: [0, -42]
+  });
+}
+
+/** 依進香足跡刷新精選標記的「已參拜」樣式 */
+function refreshVisitedMarkers(visitedKeys) {
+  markers.forEach(marker => {
+    const t = marker.templeData;
+    marker.setIcon(createDeityIcon(t.mainDeity, visitedKeys.has('t' + t.id)));
   });
 }
 
@@ -130,6 +138,12 @@ function createPopupContent(temple) {
   const lodgingInfo = temple.lodging
     ? `<div class="popup-info"><strong>${window.i18n.getText('lodgingLabel')}:</strong> ${temple.lodging.nameZh}${temple.lodging.noteZh ? '(' + temple.lodging.noteZh + ')' : ''}</div>`
     : '';
+  const safeName = String(temple.nameZh).replace(/'/g, "\\'");
+  const checkInBtn = `
+    <button class="popup-btn popup-btn-details" onclick="journeyCheckIn('t${temple.id}', '${safeName}', '${window.i18n.getDeityText(temple.mainDeity).replace(/'/g, "\\'")}', ${temple.lat}, ${temple.lng})">
+      🙏 ${lang === 'zh' ? '參拜打卡' : 'Check In'}
+    </button>
+  `;
 
   let actionButtons = '';
 
@@ -170,6 +184,7 @@ function createPopupContent(temple) {
           ℹ️ ${detailsText}
         </button>
       </div>
+      <div class="popup-actions">${checkInBtn}</div>
     </div>
   `;
 }
@@ -319,6 +334,10 @@ function showTempleModal(templeId) {
     <button class="btn-add-route" onclick="addTempleToRoute(${temple.id})">
       ${window.i18n.getText('addToRoute')}
     </button>
+
+    <button class="btn-add-route" style="margin-top:6px;" onclick="journeyCheckIn('t${temple.id}', '${String(temple.nameZh).replace(/'/g, "\\'")}', '${window.i18n.getDeityText(temple.mainDeity).replace(/'/g, "\\'")}', ${temple.lat}, ${temple.lng})">
+      🙏 ${window.i18n.getText('checkInTitle')}
+    </button>
   `;
 
   // Show modal
@@ -352,6 +371,11 @@ function initLayeredMap() {
 
   // 源流連結預設開啟(僅加入 control 不會自動顯示)
   lineageGroup.addTo(map);
+
+  // v1.x:進香足跡路線圖層(預設開啟;空紀錄時為空圖層)
+  const journeyLayer = window.journeyUI.getLayer();
+  L.control.layers(null, { '進香足跡路線': journeyLayer }, { position: 'topright' }).addTo(map);
+  journeyLayer.addTo(map);
 
   // 首次開啟「全量廟宇」圖層時,動態載入 data/moi-temples.js
   map.on('overlayadd', function(e) {
@@ -484,5 +508,6 @@ window.mapModule = {
   focus: focusTemple,
   getMap: getMap,
   getAllMarkers: getAllMarkers,
-  updatePopups: updateMarkerPopups
+  updatePopups: updateMarkerPopups,
+  refreshVisited: refreshVisitedMarkers
 };

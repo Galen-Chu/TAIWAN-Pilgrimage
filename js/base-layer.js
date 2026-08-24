@@ -28,12 +28,24 @@ const BASE_SYSTEM_COLORS = {
   "土地公": "#8D6E63"
 };
 
-function baseDotIcon(color) {
+function baseDotIcon(color, visited) {
   return L.divIcon({
     className: 'base-dot-icon',
-    html: `<span class="base-dot" style="background-color:${color};"></span>`,
+    html: `<span class="base-dot${visited ? ' visited' : ''}" style="background-color:${color};"></span>`,
     iconSize: [10, 10],
     iconAnchor: [5, 5]
+  });
+}
+
+/** 依進香足跡刷新底圖標記的「已參拜」樣式 */
+function refreshBaseVisited(visitedKeys) {
+  baseLayer.visited = visitedKeys;
+  baseLayer.allMarkers.forEach(m => {
+    const t = m.baseData;
+    if (t && t.sourceId != null) {
+      m.setIcon(baseDotIcon(BASE_SYSTEM_COLORS[t.primarySystem] || '#9E9E9E',
+        visitedKeys.has('m' + t.sourceId)));
+    }
   });
 }
 
@@ -96,7 +108,7 @@ function buildBaseMarkers() {
     .map(function(t) {
       const color = BASE_SYSTEM_COLORS[t.primarySystem] || '#9E9E9E';
       const marker = L.marker([t.lat, t.lng], {
-        icon: baseDotIcon(color),
+        icon: baseDotIcon(color, baseLayer.visited && baseLayer.visited.has('m' + t.sourceId)),
         title: t.nameZh
       });
       marker.baseData = t;
@@ -118,6 +130,11 @@ function basePopupContent(t) {
       </div>
       ${t.addressZh ? `<div class="popup-info"><strong>地址:</strong><br>${t.addressZh}</div>` : ''}
       ${t.phone ? `<div class="popup-info"><strong>電話:</strong> ${t.phone}</div>` : ''}
+      <div class="popup-actions">
+        <button class="popup-btn popup-btn-details" onclick="journeyCheckIn('m${t.sourceId}', '${String(t.nameZh).replace(/'/g, "\\'")}', '${String(t.mainDeityRaw || '').replace(/'/g, "\\'")}', ${t.lat}, ${t.lng})">
+          🙏 參拜打卡
+        </button>
+      </div>
       <div class="popup-info" style="font-size:11px;color:#666;">
         資料來源:內政部「全國宗教資訊系統資料-寺廟」(政府資料開放授權條款-第1版)
       </div>
@@ -149,5 +166,6 @@ window.baseLayerModule = {
   getCluster: getBaseCluster,
   ensureLoaded: ensureBaseLayerLoaded,
   applyFilter: applyBaseFilter,
+  refreshVisited: refreshBaseVisited,
   isLoaded: function() { return baseLayer.loaded; }
 };

@@ -41,6 +41,8 @@
 
 - 寫入中文內容後請掃描 U+FFFD 損壞字元(rg "\x{FFFD}"),發現立即修復;
   驗證器亦內建此檢查。
-- 待辦:澎湖天后宮座標待複核;lineage.js 出處待補具體文獻;
-  全量底層 moi-temples.js 尚未接入 UI(v1.0 分層渲染時處理,D8 效能選項屆時一併決定)。
+- 待辦:lineage.js 尚有 4 筆出處待補具體文獻;關聖帝君/玉皇/地藏的源流邊待策展;
+  阿彌陀佛系統需宗派脈絡另案策展。
+- UI 驗證工具:headless Chrome via Selenium(腳本 `data/raw/browser-smoke.py` 與
+  `data/raw/journey-e2e.py`,gitignored,以 PMS 專案 `.blackvenv` 執行)。
 - repo 曾多次改名(現為 `Galen-Chu/TAIWAN-Pilgrimage`),本地 remote 已同步,勿改回舊 URL。

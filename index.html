@@ -62,6 +62,20 @@
                 <button id="clear-filters" class="btn-clear" data-i18n="clearFilters">清除篩選</button>
             </section>
 
+            <!-- Journey Section (v1.x) -->
+            <section class="journey-section">
+                <h2 data-i18n="journeyTitle">進香足跡</h2>
+                <div id="journey-stats" class="journey-stats"></div>
+                <div class="journey-buttons">
+                    <button id="journey-export-json" class="btn-secondary">匯出 JSON</button>
+                    <button id="journey-export-gpx" class="btn-secondary">匯出 GPX</button>
+                    <button id="journey-import" class="btn-secondary">匯入</button>
+                    <button id="journey-clear" class="btn-clear">清除</button>
+                    <input type="file" id="journey-import-file" accept=".json,.gpx" style="display:none;">
+                </div>
+                <div id="journey-records" class="journey-records"></div>
+            </section>
+
             <!-- Route Planning Section -->
             <section class="route-section">
                 <h2 data-i18n="planRoute">路線規劃</h2>
@@ -141,6 +155,8 @@
     <script src="js/map.js"></script>
     <script src="js/base-layer.js"></script>
     <script src="js/lineage-layer.js"></script>
+    <script src="js/journey.js"></script>
+    <script src="js/journey-ui.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/search.js"></script>
     <script src="js/routing.js"></script>

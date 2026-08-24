@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 5. Initialize routing
     window.routingModule.init(map, temples);
 
+    // 6. Initialize personal journey (v1.x: check-in, footprint, import/export)
+    window.journeyUI.init();
+
     // 6. Setup global event listeners
     setupGlobalEventListeners();
 
