@@ -738,3 +738,57 @@ body {
   font-weight: 600;
   border: 2px solid rgba(255, 255, 255, 0.85);
 }
+
+/* ===== v1.x 進香足跡 ===== */
+.marker-pin.visited {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.95), 0 0 8px rgba(212, 175, 55, 0.8);
+}
+.marker-pin.visited::after {
+  content: '🙏';
+  position: absolute;
+  top: -14px;
+  right: -8px;
+  font-size: 13px;
+}
+.base-dot.visited {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.9);
+  border-radius: 50%;
+}
+.journey-section {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.journey-stat-line { font-size: 14px; margin-bottom: 4px; }
+.journey-stat-sub { font-size: 12px; color: #666; margin-bottom: 6px; }
+.journey-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.journey-records {
+  max-height: 260px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+.journey-empty { color: #888; padding: 6px 0; }
+.journey-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+}
+.journey-item-date { color: #666; }
+.journey-item-name { font-weight: 600; }
+.journey-item-note { color: #888; flex-basis: 100%; }
+.journey-item-del {
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 14px;
+}

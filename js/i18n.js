@@ -65,6 +65,18 @@ const translations = {
     mapData: "Map Data:",
     routing: "Routing:",
 
+    // Journey (v1.x)
+    journeyTitle: "My Pilgrimage",
+    journeyVisitsUnit: "visits",
+    journeyTemplesUnit: "temples",
+    journeyEmpty: "No visits yet - tap \"Check In\" on a temple",
+    checkInTitle: "Check In",
+    checkInDate: "Visit time",
+    checkInNote: "Note",
+    save: "Save",
+    cancel: "Cancel",
+    delete: "Delete",
+
     // Messages
     noResults: "No temples found",
     routeError: "Unable to calculate route. Showing straight-line distance.",
@@ -131,6 +143,18 @@ const translations = {
     // Footer
     mapData: "地圖資料:",
     routing: "路線規劃:",
+
+    // Journey (v1.x)
+    journeyTitle: "進香足跡",
+    journeyVisitsUnit: "次參拜",
+    journeyTemplesUnit: "間廟宇",
+    journeyEmpty: "尚無參拜紀錄——在廟宇彈窗點「參拜打卡」開始",
+    checkInTitle: "參拜打卡",
+    checkInDate: "參拜時間",
+    checkInNote: "備註",
+    save: "儲存",
+    cancel: "取消",
+    delete: "刪除",
 
     // Messages
     noResults: "沒有找到廟宇",
