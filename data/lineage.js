@@ -1,9 +1,10 @@
 // 台灣進香地圖 — 源流連結資料(Lineage)
 // 資料模型:docs/CONCEPT.md「三、資料模型草案」
 //
-// 已策展系統(2026-08-21):媽祖(10 筆)、觀音(安海龍山寺系 3 筆)。
-// 關聖帝君、玉皇、地藏:首批以「落地點節點」收錄(見 temples.js 開基武廟/
-//   祀典武廟/首廟天壇/開基玉皇宮/新莊地藏庵),源流邊待文獻策展。
+// 已策展系統:媽祖(10 筆)、觀音(安海龍山寺系 3 筆)、關聖帝君(5 筆,2026-08-31 首批:
+//   開基武廟/祀典武廟/行天宮/礁溪協天廟/高雄文武聖殿)。
+// 玉皇、地藏:首批以「落地點節點」收錄(見 temples.js 首廟天壇/開基玉皇宮/
+//   新莊地藏庵),源流邊待文獻策展。
 // 阿彌陀佛:民間分香源流不適用(佛教宗派脈絡),待另行策展。
 //
 // 欄位說明:
@@ -28,8 +29,9 @@ const lineages = [
     relation: "分香",
     year: null,
     status: "待查",
-    note: "相傳明萬曆年間媽祖香火傳入澎湖,為媽祖信仰登陸台灣之始",
-    source: "澎湖天后宮沿革、澎湖縣文化局介紹(具體文獻待補)"
+    note: "明萬曆年間澎湖已有天妃宮(俗稱媽祖宮);萬曆32年(1604)沈有容諭退荷軍碑為最早可靠史料,經考據為全台第一座媽祖廟",
+    source: "內政部臺灣宗教文化地圖(澎湖天后宮,國定古蹟);澎湖縣政府文化局《2010澎湖縣文化資產手冊》",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=22"
   },
   {
     id: 2,
@@ -52,7 +54,8 @@ const lineages = [
     year: 1684,
     status: "存爭議",
     note: "1684年官建為確定史實;媽祖神像源流採施琅自湄洲奉迎說(依廟方沿革),學界另有考證",
-    source: "台南大天后宮沿革(官網待補)"
+    source: "台南大天后宮官網沿革(康熙年間);官網另刊蔣維錟〈臺南大天后宮淵源新考〉修正施琅改建說",
+    evidenceUrl: "https://www.gtainanmazu.org.tw/?act=menuinfo&ml_id=20211026006"
   },
   {
     id: 4,
@@ -74,8 +77,9 @@ const lineages = [
     relation: "承繼",
     year: 1811,
     status: "存爭議",
-    note: "嘉慶16年王得祿倡議遷建;北港朝天宮與新港奉天宮各自主張承繼笨港天后宮香火",
-    source: "兩宮沿革與清嘉慶年間遷建文獻(具體出處待補)"
+    note: "嘉慶年間笨港天后宮因水患遷建;奉天宮沿革稱嘉慶16年(1811)王得祿倡建落成,文化資產登錄資料採嘉慶23年(1818)現址再建說。北港朝天宮與新港奉天宮各自主張承繼笨港香火",
+    source: "新港奉天宮官網歷史沿革;文化部文化資產網(新港奉天宮,縣定古蹟)",
+    evidenceUrl: "https://www.hsinkangmazu.org.tw/?act=menuinfo&ml_id=20231221002"
   },
   {
     id: 6,
@@ -133,8 +137,9 @@ const lineages = [
     relation: "分香",
     year: null,
     status: "待查",
-    note: "鹿港天后宮(舊祖宮)源流說法多種,待考",
-    source: "鹿港天后宮沿革(具體出處待補)"
+    note: "鹿港天后宮(舊祖宮)沿革稱創建於明末,康熙22年(1683)施琅征台所奉湄洲開基媽祖留鎮鹿港,自稱台灣唯一奉祀湄洲祖廟開基媽祖神尊的廟宇;源流說法多種,待考",
+    source: "鹿港天后宮官網歷史沿革",
+    evidenceUrl: "https://www.lugangmazu.org/history/"
   },
   {
     id: 11,
@@ -155,9 +160,10 @@ const lineages = [
     toTempleId: 29,
     relation: "分香",
     year: null,
-    status: "待查",
-    note: "台灣諸龍山寺多溯源自安海龍山寺;鹿港龍山寺創建年代說法多種,分香關係待考",
-    source: "鹿港龍山寺沿革(具體出處待補)"
+    status: "確定",
+    note: "台灣諸龍山寺多溯源自安海龍山寺;鹿港龍山寺前身一說1653年肇善禪師創建於鹿仔港舊河道邊,乾隆51年(1786)泉州人陳邦光倡議遷建現址",
+    source: "內政部臺灣宗教文化地圖(鹿港龍山寺,國定古蹟);文化部文化資產網",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=10"
   },
   {
     id: 13,
@@ -167,8 +173,69 @@ const lineages = [
     relation: "分香",
     year: null,
     status: "待查",
-    note: "相傳與安海龍山寺同源;待文獻考證",
-    source: "鳳山龍山寺沿革(具體出處待補)"
+    note: "相傳泉州移民攜安海龍山寺觀音香火渡台,掛於古井石榴樹顯靈而建寺;官網自述創建年代缺乏正式考證(康熙末年/乾隆初年二說,寺方自認康熙年間)",
+    source: "鳳山龍山寺官網歷史沿革;文化部文化資產網(國定古蹟)",
+    evidenceUrl: "https://www.longshansi.org.tw/?act=menuinfo&ml_id=20211207002"
+  },
+  {
+    id: 14,
+    deity: "關聖帝君",
+    fromExternalName: "泉州塗門關帝廟(今通淮關岳廟,中國福建)",
+    toTempleId: 26,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "相傳明鄭時期鄭成功部將自泉州塗門關帝廟奉請二關聖帝君神像來台,明永曆23年(1669)於承天府西定坊建廟,廟前港口因而得名關帝港",
+    source: "內政部臺灣宗教文化地圖(開基武廟)",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=241"
+  },
+  {
+    id: 15,
+    deity: "關聖帝君",
+    fromExternalName: "荊州關羽祠(中國湖北)",
+    toTempleId: 16,
+    relation: "分香",
+    year: null,
+    status: "存爭議",
+    note: "祀典武廟前身為明永曆19年(1665)寧靖王府一元子園關帝廳;廟方稱鎮殿『開基二關帝』為寧靖王自荊州關羽祠奉請渡台,另有源於福建東山關帝廟之說",
+    source: "祀典武廟官網武廟歷史/祭祀神祇頁(荊州說);中國《福建日報》等文獻採東山分靈說",
+    evidenceUrl: "https://www.twsdwumiao.org.tw/?act=menuinfo&ml_id=20210514003"
+  },
+  {
+    id: 16,
+    deity: "關聖帝君",
+    fromExternalName: "東山關帝廟(中國福建漳州)",
+    toTempleId: 32,
+    relation: "分香",
+    year: 1781,
+    status: "確定",
+    note: "開基『老二帝』相傳清乾隆46年(1781)林應獅等自福建銅山(東山)關帝廟分靈,經廈門渡海於滬尾登岸,越草嶺古道入噶瑪蘭;嘉慶9年(1804)建廟。1991年起組團赴東山祖廟謁祖",
+    source: "礁溪協天廟官網緣起沿革;國家文化記憶庫(宜蘭縣政府文化局)",
+    evidenceUrl: "https://www.sttemple.org/index/index-04-1.htm"
+  },
+  {
+    id: 17,
+    deity: "關聖帝君",
+    fromExternalName: "澎湖紅毛城武聖廟(紅木埕武聖廟)",
+    toTempleId: 33,
+    relation: "分香",
+    year: 1921,
+    status: "確定",
+    note: "民國10年(1921)關聖帝君聖誕,高雄信眾決議奉請澎湖紅毛城武聖廟神尊來台值年輪祀,後立武聖殿,1956年文武合祀成今貌;紅毛城武聖廟本身相傳為明鄭銅山水寨官兵自銅山(東山)分靈",
+    source: "高雄文武聖殿官網;高雄市立歷史博物館「高雄小故事」",
+    evidenceUrl: "https://www.kwwt.org.tw/"
+  },
+  {
+    id: 18,
+    deity: "關聖帝君",
+    fromExternalName: "覺修宮(台北市)",
+    toTempleId: 15,
+    relation: "分香",
+    year: 1943,
+    status: "待查",
+    note: "1943年空真子師父等於台北永樂町設「行天堂」,敬奉相傳由覺修宮分靈而來的五恩主(以關聖帝君為首),為行天宮淵源之始;行天宮官網沿革頁未明載覺修宮分靈一事",
+    source: "維基百科行天宮條目(引行天宮出版品《行天之道》);行天宮官網沿革頁",
+    evidenceUrl: "https://zh.wikipedia.org/wiki/%E8%A1%8C%E5%A4%A9%E5%AE%AE"
   }
 ];
 
@@ -193,5 +260,30 @@ const externalNodes = [
     name: "安海龍山寺(中國福建晉江)",
     lat: 24.72,
     lng: 118.445
+  },
+  {
+    name: "泉州塗門關帝廟(今通淮關岳廟,中國福建)",
+    lat: 24.904831,
+    lng: 118.588388
+  },
+  {
+    name: "荊州關羽祠(中國湖北)",
+    lat: 30.350253,
+    lng: 112.178178
+  },
+  {
+    name: "東山關帝廟(中國福建漳州)",
+    lat: 23.737172,
+    lng: 117.531821
+  },
+  {
+    name: "澎湖紅毛城武聖廟(紅木埕武聖廟)",
+    lat: 23.573158,
+    lng: 119.575211
+  },
+  {
+    name: "覺修宮(台北市)",
+    lat: 25.076178,
+    lng: 121.513649
   }
 ];

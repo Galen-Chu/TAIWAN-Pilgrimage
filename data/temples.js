@@ -79,7 +79,7 @@ const temples = [
     addressZh: "嘉義縣新港鄉新民路53號",
     addressEn: "No. 53, Xinmin Rd., Xingang Township, Chiayi County",
     phone: "+886-5-374-2035",
-    website: "http://www.hingkongmazu.org",
+    website: "https://www.hsinkangmazu.org.tw",
     lat: 23.55662,
     lng: 120.3479,
     region: "South",
@@ -98,7 +98,7 @@ const temples = [
     mainDeity: "媽祖",
     addressZh: "彰化縣鹿港鎮中山路430號",
     phone: "+886-4-777-9899",
-    website: "http://www.lugangmazu.org",
+    website: "https://www.lugangmazu.org",
     lat: 24.059317,
     lng: 120.431396,
     region: "Central",
@@ -176,7 +176,7 @@ const temples = [
     addressZh: "台南市中西區永福路二段227巷18號",
     addressEn: "No. 18, Ln. 227, Sec. 2, Yongfu Rd., West Central Dist., Tainan City",
     phone: "+886-6-221-1178",
-    website: "http://www.twtainan.net",
+    website: "https://www.gtainanmazu.org.tw",
     lat: 22.9961,
     lng: 120.2019,
     region: "South",
@@ -307,22 +307,24 @@ const temples = [
   },
   {
     id: 16,
-    nameZh: "台南武廟",
+    nameZh: "祀典武廟",
+    nameEn: "Sidian Wu Miao (Tainan)",
     mainDeity: "關聖帝君",
     addressZh: "台南市中西區永福路二段229號",
+    addressEn: "No. 229, Sec. 2, Yongfu Rd., West Central Dist., Tainan City",
     phone: "+886-6-220-2390",
-    website: "https://www.facebook.com/TainanWumiao/",
+    website: "https://www.twsdwumiao.org.tw",
     lat: 22.99674,
     lng: 120.202103,
     region: "South",
-    foundedYear: null,
-    history: "台灣首座官建關帝廟",
+    foundedYear: 1665,
+    history: "明永曆19年(1665)建於寧靖王府一元子園關帝廳,雍正5年(1727)奉旨列入祀典,為全台唯一列入祀典的武廟;俗稱大關帝廟",
     lodging: {
       nameZh: "武廟香客大樓",
       noteZh: null
     },
-    landingType: null,
-    landingNote: null
+    landingType: "開基廟",
+    landingNote: "前身為明寧靖王府家廟關帝廳;鎮殿『開基二關帝』相傳為寧靖王自湖北荊州關羽祠奉請渡台(另有源於福建東山關帝廟之說)"
   },
   {
     id: 17,
@@ -488,7 +490,7 @@ const temples = [
     history: "全台歷史最悠久的媽祖廟(相傳創建於明萬曆年間)",
     lodging: null,
     landingType: "開基廟",
-    landingNote: "相傳1592年(明萬曆20年)前即已建廟,為全台最古媽祖廟(確切年代待考)"
+    landingNote: "相傳明萬曆20年(1592)前即已建廟;萬曆32年(1604)沈有容諭退荷軍碑為最早可靠史料,公認全台最古媽祖廟(確切建廟年代待考)"
   },
   {
     id: 26,
@@ -502,10 +504,10 @@ const temples = [
     lng: 120.200798,
     region: "South",
     foundedYear: null,
-    history: "相傳明永曆年間建,台灣最早關帝廟之一,俗稱小關帝廟",
+    history: "相傳明永曆年間鄭氏部將自泉州塗門關帝廟奉請神像建廟,台灣最早關帝廟之一,俗稱小關帝廟",
     lodging: null,
     landingType: "開基廟",
-    landingNote: "相傳1669年(明永曆23年)建,與祀典武廟並為台南關帝信仰雙璧(年代待考)"
+    landingNote: "相傳1669年(明永曆23年)建,與祀典武廟並為台南關帝信仰雙璧(兩廟香源各自獨立,年代待考)"
   },
   {
     id: 27,
@@ -563,7 +565,7 @@ const temples = [
     mainDeity: "觀音菩薩",
     addressZh: "高雄市鳳山區中山路7號",
     phone: null,
-    website: null,
+    website: "https://www.longshansi.org.tw",
     lat: 22.620661,
     lng: 120.362099,
     region: "South",
@@ -588,5 +590,41 @@ const temples = [
     lodging: null,
     landingType: null,
     landingNote: null
+  },
+  {
+    id: 32,
+    nameZh: "礁溪協天廟",
+    nameEn: "Jiaosi Xietian Temple",
+    mainDeity: "關聖帝君",
+    addressZh: "宜蘭縣礁溪鄉中山路一段51號",
+    addressEn: "No. 51, Sec. 1, Zhongshan Rd., Jiaosi Township, Yilan County",
+    phone: null,
+    website: "https://www.sttemple.org",
+    lat: 24.8183,
+    lng: 121.769096,
+    region: "North",
+    foundedYear: 1804,
+    history: "北台灣關帝信仰中心;開基『老二帝』相傳乾隆46年(1781)自福建銅山(東山)關帝廟分靈渡台,嘉慶9年(1804)建廟",
+    lodging: null,
+    landingType: "祖廟",
+    landingNote: "分靈廟逾七百處,每年春秋祭典各地分靈神尊回廟進香;1991年起組團赴福建東山祖廟謁祖"
+  },
+  {
+    id: 33,
+    nameZh: "高雄文武聖殿",
+    nameEn: "Kaohsiung Wenwu Temple",
+    mainDeity: "關聖帝君",
+    addressZh: "高雄市鹽埕區富野路170號",
+    addressEn: "No. 170, Fuye Rd., Yancheng Dist., Kaohsiung City",
+    phone: null,
+    website: "https://www.kwwt.org.tw",
+    lat: 22.6294899,
+    lng: 120.2814026,
+    region: "South",
+    foundedYear: 1921,
+    history: "民國10年(1921)奉請澎湖紅毛城武聖廟關帝神尊來高雄值年輪祀,地方俗稱『澎湖廟』;1956年文武合祀",
+    lodging: null,
+    landingType: "分香子廟",
+    landingNote: "1921年分香自澎湖紅毛城武聖廟(紅木埕武聖廟),南台灣關帝信仰重鎮"
   }
 ];
