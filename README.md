@@ -6,6 +6,8 @@
 
 *A bilingual (中文/English) interactive map. Formerly the "Taiwan Pilgrim Building Map", pivoting toward a belief-oriented map of temples, deity lineages, and personal pilgrimage journeys.*
 
+**線上版**:https://galen-chu.github.io/TAIWAN-Pilgrimage/
+
 ## 核心概念
 
 地圖由三層構成，用「連結」串起來：
@@ -90,11 +92,9 @@ pilgrim-map/
 
 ## 部署
 
-純靜態網站，可部署至：
+已部署於 **GitHub Pages**（2026-08-31 啟用，D7 定案）：<https://galen-chu.github.io/TAIWAN-Pilgrimage/>
 
-- **GitHub Pages**：Push 後在 repo 設定開啟 Pages
-- **Netlify**：拖放資料夾即可
-- **任何網頁伺服器**
+來源為 main 分支根目錄，merge/push 後自動更新線上版。其他靜態托管（Netlify 拖放資料夾、任何網頁伺服器）皆可作為備選。
 
 ## Roadmap
 
