@@ -383,7 +383,8 @@ function initLayeredMap() {
       window.baseLayerModule.ensureLoaded(function() {
         const selectedDeities = window.filtersModule ? window.filtersModule.getSelectedDeities() : [];
         const selectedRegions = window.filtersModule ? window.filtersModule.getSelectedRegions() : [];
-        window.baseLayerModule.applyFilter(selectedDeities, selectedRegions);
+        const lodgingOnly = window.filtersModule ? window.filtersModule.getLodgingOnly() : false;
+        window.baseLayerModule.applyFilter(selectedDeities, selectedRegions, lodgingOnly);
       });
     }
   });
@@ -400,11 +401,12 @@ function updateMarkerPopups() {
 }
 
 /**
- * Filter markers based on selected deities and regions
+ * Filter markers based on selected deities, regions, and lodging availability
  * @param {array} selectedDeities - Array of selected deity names
  * @param {array} selectedRegions - Array of selected region names
+ * @param {boolean} [lodgingOnly] - True to show only temples with lodging (D5)
  */
-function filterMarkers(selectedDeities, selectedRegions) {
+function filterMarkers(selectedDeities, selectedRegions, lodgingOnly) {
   // Clear all markers from cluster
   markerCluster.clearLayers();
 
@@ -413,14 +415,15 @@ function filterMarkers(selectedDeities, selectedRegions) {
     const temple = marker.templeData;
     const deityMatch = selectedDeities.length === 0 || selectedDeities.includes(temple.mainDeity);
     const regionMatch = selectedRegions.length === 0 || selectedRegions.includes(temple.region);
-    return deityMatch && regionMatch;
+    const lodgingMatch = !lodgingOnly || temple.lodging != null;
+    return deityMatch && regionMatch && lodgingMatch;
   });
 
   markerCluster.addLayers(filteredMarkers);
 
   // v1.0:全量底圖同步套用篩選(未載入時為 no-op)
   if (window.baseLayerModule) {
-    window.baseLayerModule.applyFilter(selectedDeities, selectedRegions);
+    window.baseLayerModule.applyFilter(selectedDeities, selectedRegions, lodgingOnly);
   }
 
   console.log(`Filtered to ${filteredMarkers.length} markers`);
@@ -484,11 +487,6 @@ function initMapModule(temples) {
       }
     });
   }
-
-  // Listen for language changes
-  window.addEventListener('languageChanged', function(e) {
-    updateMarkerPopups();
-  });
 
   return map;
 }

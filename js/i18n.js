@@ -1,92 +1,16 @@
-// Taiwan Pilgrim Map - Internationalization (i18n) Module
+// Taiwan Pilgrim Map - i18n Module (D6 語言政策:中文為主)
+//
+// 2026-08-31 v3.0 起依 D6 收斂:介面固定中文,移除全介面英文化切換;
+// 英文僅用於精選落地點的 nameEn/addressEn 欄位(於彈窗/詳情卡以次要行顯示)。
+// 保留 getText/getDeityText/getRegionText 介面,眾模組以 zh 字典取值。
 
 /**
- * Translation data for bilingual support (Chinese/English)
+ * 中文介面文字(鍵值即 data-i18n 屬性)
  */
 const translations = {
-  en: {
-    // Header
-    title: "Taiwan Pilgrim Map",
-    langToggle: "中文",
-
-    // Search
-    searchPlaceholder: "Search temples by name or address...",
-
-    // Filters
-    filterByDeity: "Filter by Deity",
-    filterByRegion: "Filter by Region",
-    clearFilters: "Clear Filters",
-
-    // Deity Types
-    deityMazu: "Mazu",
-    deityWangYe: "Wang Ye (Five Princes)",
-    deityBaosheng: "Baosheng Dadi",
-    deityGuandi: "Guan Di",
-    deityLudongbin: "Lu Dongbin",
-    deityBuddhist: "Buddhist",
-    deityGuanyin: "Guanyin",
-    deityTudigong: "Earth God (Tudigong)",
-    deityYuhuang: "Jade Emperor",
-    deityDizang: "Ksitigarbha",
-    deityAmitabha: "Amitabha",
-
-    // Regions
-    regionNorth: "North",
-    regionCentral: "Central",
-    regionSouth: "South",
-    regionEast: "East",
-    regionIslands: "Islands",
-
-    // Route Planning
-    planRoute: "Route Planning",
-    start: "Start",
-    end: "End",
-    selectTemple: "Select temple...",
-    getRoute: "Get Route",
-    clearRoute: "Clear Route",
-    distance: "Distance:",
-    estimatedTime: "Est. Time:",
-    straightLine: "(Straight-line distance)",
-
-    // Temple Details
-    phone: "Phone",
-    website: "Website",
-    address: "Address",
-    description: "Description",
-    addToRoute: "Add to Route",
-    addedToRoute: "Added to Route",
-    viewDetails: "View Details",
-    foundedYearLabel: "Founded",
-    lodgingLabel: "Pilgrim Lodging",
-    landingLabel: "Landing Point",
-    historyLabel: "History",
-
-    // Footer
-    mapData: "Map Data:",
-    routing: "Routing:",
-
-    // Journey (v1.x)
-    journeyTitle: "My Pilgrimage",
-    journeyVisitsUnit: "visits",
-    journeyTemplesUnit: "temples",
-    journeyEmpty: "No visits yet - tap \"Check In\" on a temple",
-    checkInTitle: "Check In",
-    checkInDate: "Visit time",
-    checkInNote: "Note",
-    save: "Save",
-    cancel: "Cancel",
-    delete: "Delete",
-
-    // Messages
-    noResults: "No temples found",
-    routeError: "Unable to calculate route. Showing straight-line distance.",
-    loading: "Loading..."
-  },
-
   zh: {
     // Header
     title: "台灣進香地圖",
-    langToggle: "English",
 
     // Search
     searchPlaceholder: "搜尋廟宇名稱或地址...",
@@ -192,27 +116,16 @@ const regionTranslationMap = {
 };
 
 /**
- * Current language state
+ * Current language state (D6: fixed 'zh'; interface is Chinese-primary)
  */
-let currentLanguage = localStorage.getItem('pilgrim-map-language') || 'zh';
+const currentLanguage = 'zh';
 
 /**
  * Get current language
- * @returns {string} Current language code ('zh' or 'en')
+ * @returns {string} Language code ('zh')
  */
 function getCurrentLanguage() {
   return currentLanguage;
-}
-
-/**
- * Toggle language between Chinese and English
- */
-function toggleLanguage() {
-  currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
-  localStorage.setItem('pilgrim-map-language', currentLanguage);
-  updateUIText();
-  updateMarkersLanguage();
-  updateSearchPlaceholder();
 }
 
 /**
@@ -277,32 +190,9 @@ function updateSearchPlaceholder() {
 }
 
 /**
- * Update marker popups with current language
- * This function will be called by the map module
- */
-function updateMarkersLanguage() {
-  // Trigger custom event that map module will listen to
-  window.dispatchEvent(new CustomEvent('languageChanged', {
-    detail: { language: currentLanguage }
-  }));
-}
-
-/**
  * Initialize i18n module
  */
 function initI18n() {
-  // Set initial language
-  const savedLang = localStorage.getItem('pilgrim-map-language');
-  if (savedLang) {
-    currentLanguage = savedLang;
-  }
-
-  // Set up language toggle button
-  const langToggle = document.getElementById('lang-toggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', toggleLanguage);
-  }
-
   // Initial UI text update
   updateUIText();
   updateSearchPlaceholder();
@@ -310,10 +200,9 @@ function initI18n() {
   console.log(`i18n initialized with language: ${currentLanguage}`);
 }
 
-// Export functions for use in other modules
+// Export functions for use by other modules
 window.i18n = {
   init: initI18n,
-  toggle: toggleLanguage,
   getText: getText,
   getDeityText: getDeityText,
   getRegionText: getRegionText,

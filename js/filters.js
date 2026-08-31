@@ -5,6 +5,7 @@
  */
 let selectedDeities = [];
 let selectedRegions = [];
+let lodgingOnly = false;
 
 /**
  * Extract unique deities and regions from temple data
@@ -121,10 +122,19 @@ function handleFilterChange(event) {
 }
 
 /**
+ * Handle lodging-only checkbox change (D5:香客大樓篩選,供進香住宿規劃)
+ * @param {Event} event - Change event
+ */
+function handleLodgingFilterChange(event) {
+  lodgingOnly = event.target.checked;
+  applyFilters();
+}
+
+/**
  * Apply filters to markers
  */
 function applyFilters() {
-  window.mapModule.filter(selectedDeities, selectedRegions);
+  window.mapModule.filter(selectedDeities, selectedRegions, lodgingOnly);
 }
 
 /**
@@ -133,6 +143,7 @@ function applyFilters() {
 function clearFilters() {
   selectedDeities = [];
   selectedRegions = [];
+  lodgingOnly = false;
 
   // Uncheck all checkboxes
   const checkboxes = document.querySelectorAll('.filter-checkbox input[type="checkbox"]');
@@ -157,6 +168,12 @@ function initFilters(temples) {
     clearButton.addEventListener('click', clearFilters);
   }
 
+  // Set up lodging-only checkbox (static in index.html)
+  const lodgingCheckbox = document.getElementById('lodging-only-filter');
+  if (lodgingCheckbox) {
+    lodgingCheckbox.addEventListener('change', handleLodgingFilterChange);
+  }
+
   console.log('Filters initialized');
 }
 
@@ -176,11 +193,20 @@ function getSelectedRegions() {
   return selectedRegions;
 }
 
+/**
+ * Get lodging-only filter state
+ * @returns {boolean} True if only temples with lodging should show
+ */
+function getLodgingOnly() {
+  return lodgingOnly;
+}
+
 // Export functions for use in other modules
 window.filtersModule = {
   init: initFilters,
   apply: applyFilters,
   clear: clearFilters,
   getSelectedDeities: getSelectedDeities,
-  getSelectedRegions: getSelectedRegions
+  getSelectedRegions: getSelectedRegions,
+  getLodgingOnly: getLodgingOnly
 };

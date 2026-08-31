@@ -27,6 +27,7 @@
 | 2 | `feat/lineage-yuhuang-dizang` | 玉皇首批 3 邊;地藏首批 1 邊;+5 間廟;新莊地藏庵補 landingType |
 | 3 | `feat/lineage-amitabha-batch1` | D10「法脈」模型;阿彌陀佛 3 邊(印光/廣欽/知恩院三路徑);+4 間寺 |
 | 4 | `feat/lineage-networks-batch2` | D11 跨系統模型;齋教三派 6 邊;文武大眾爺系統;二輪補查 5 邊 |
+| 5(v3.0) | `feat/v3.0-wangye-luantang-ui` | D12:E1 王爺首批 4 邊(+溫府千歲系統)、E6 鸞堂 2 堂、D5/D6 UI 收尾 |
 
 決策日誌完整紀錄見 [REQUIREMENTS.md](REQUIREMENTS.md)「已定案事項」。
 
