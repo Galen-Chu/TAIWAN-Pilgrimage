@@ -38,7 +38,7 @@
 - [ ] **語言政策調整**：介面與資料中文為主，英文命名僅用於精選落地點
 - [x] **資料擴充**：匯入政府開放資料與策展資料（全量底層 12,422 筆已產生 `data/moi-temples.js`；座標經 2026-08-21 複校與 OSM 校正）
 
-決策詳情見 [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)。
+決策詳情見 [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)；階段歸檔與擴充評估候選見 [docs/ROADMAP.md](docs/ROADMAP.md)。
 
 ## 技術堆疊
 
@@ -74,7 +74,8 @@ pilgrim-map/
 ├── docs/
 │   ├── CONCEPT.md          # 核心概念說明
 │   ├── DATA_SOURCES.md     # 資料來源評估
-│   └── REQUIREMENTS.md     # 需求決策清單
+│   ├── REQUIREMENTS.md     # 需求決策清單
+│   └── ROADMAP.md          # 階段歸檔與擴充評估候選
 ├── tools/
 │   ├── import-moi-data.js  # 內政部 8203 匯入管線（node tools/import-moi-data.js）
 │   └── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
@@ -104,6 +105,8 @@ pilgrim-map/
 | v0.9 | 核心概念轉向、資料模型重構、全量匯入管線、神明名稱註冊表 | ✅ 完成（2026-08-18） |
 | v1.0 | 分層地圖 + 落地點標記 + 源流連結圖層 | ✅ 完成（2026-08-21；源流首批＝媽祖，其餘五系統策展中） |
 | v1.x | 個人進香之路（check-in、足跡、統計、匯入匯出） | ✅ 完成（2026-08-24，E2E 16/16） |
+| v2.0（2026-08 策展衝刺） | 部署上線＋六大系統＋齋教＋文武大眾爺源流策展（四輪，D7/D10/D11） | ✅ 完成（2026-08-31，歸檔見 [docs/ROADMAP.md](docs/ROADMAP.md)；git tag `v2.0`） |
+| v2.x | 擴充候選：儒釋道系統／泉漳潮原鄉族群／藏傳佛教／日治遺留／原民聖地等 | 📋 待評估（[docs/ROADMAP.md](docs/ROADMAP.md) E1–E6） |
 
 ## 資料來源
 

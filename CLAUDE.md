@@ -11,9 +11,10 @@
 ## 接手順序(必讀文件)
 
 1. `README.md` — 專案現況與 Roadmap(階段進度以這裡為準)
-2. `docs/REQUIREMENTS.md` — 已定案決策 D1–D9 與決策日誌
+2. `docs/REQUIREMENTS.md` — 已定案決策 D1–D11 與決策日誌
 3. `docs/CONCEPT.md` — 三層地圖結構、資料模型、神明名稱政策(D9)
 4. `docs/DATA_SOURCES.md` — 資料來源、匯入管線、資料品質備註
+5. `docs/ROADMAP.md` — 階段歸檔與擴充評估候選(E1–E6)
 
 ## 工作規則
 
@@ -45,6 +46,9 @@
   明華堂,維基/新聞出處)待日後收錄;新莊地藏庵地藏香火來源經二輪查證確認無
   唐山記載(厲祀起家,地藏為後祀),維持僅收廟宇節點;香客大樓 lodging 欄位
   呈現與語言政策調整兩項 UI 工作未做。
+- 擴充候選:見 docs/ROADMAP.md(E1–E6:儒釋道系統、泉漳潮原鄉、藏傳、日治遺留、
+  原民聖地、其他民俗)。立項前須於 REQUIREMENTS 立決策(D12 起);
+  原民聖地類未獲社群同意一律不收。
 - UI 驗證工具:headless Chrome via Selenium(腳本 `data/raw/browser-smoke.py` 與
   `data/raw/journey-e2e.py`,gitignored,以 PMS 專案 `.blackvenv` 執行)。
 - repo 曾多次改名(現為 `Galen-Chu/TAIWAN-Pilgrimage`),本地 remote 已同步,勿改回舊 URL。
