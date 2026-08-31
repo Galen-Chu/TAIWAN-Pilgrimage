@@ -101,8 +101,9 @@ if (fs.existsSync(lineagePath)) {
 
     const from = hasFromId ? temples.find(t => t.id === l.fromTempleId) : null;
     const to = temples.find(t => t.id === l.toTempleId);
-    if (from && to && from.mainDeity !== to.mainDeity) {
-      warnings.push(`${loc}: 兩端 mainDeity 不同(${from.mainDeity} → ${to.mainDeity}),請確認為有意連結`);
+    if (from && to && from.mainDeity !== to.mainDeity &&
+        l.deity !== from.mainDeity && l.deity !== to.mainDeity) {
+      warnings.push(`${loc}: 兩端 mainDeity 不同(${from.mainDeity} → ${to.mainDeity}),且 deity "${l.deity}" 未對應任一端,請確認為有意連結`);
     }
   });
 }

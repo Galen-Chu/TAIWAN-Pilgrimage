@@ -366,7 +366,7 @@ function initLayeredMap() {
   L.control.layers(null, {
     '精選廟宇': markerCluster,
     '全量廟宇(12,422 筆,首次開啟需載入)': baseCluster,
-    '源流連結(六大信仰系統)': lineageGroup
+    '源流連結': lineageGroup
   }, { collapsed: false, position: 'topright' }).addTo(map);
 
   // 源流連結預設開啟(僅加入 control 不會自動顯示)
