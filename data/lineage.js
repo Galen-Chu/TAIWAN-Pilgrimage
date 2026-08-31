@@ -9,6 +9,14 @@
 // 阿彌陀佛(2026-08-31 首批,宗派法脈,模型見 REQUIREMENTS D10):台中佛教蓮社(印光→
 //   李炳南)、妙通寺(廣欽→傳聞)、台北善導寺(日治知恩院派);台南彌陀寺為明鄭古剎,
 //   源流無文獻,僅收廟宇節點。
+// 齋教(2026-08-31,deity 欄位作網絡標籤,見 REQUIREMENTS D11):先天派報恩堂→擇賢堂、
+//   金幢派西華堂/慎德堂、龍華派德化堂/化善堂,源頭以福建區域節點呈現。
+// 文武大眾爺(2026-08-31):蘆洲文武大眾爺廟 1912 年分靈自新莊地藏庵(跨系統邊,
+//   註冊表已新增文武大眾爺系統);埔里靈巖山寺承印光宗風(待查)。
+// 二輪補查(2026-08-31):礁溪協天廟→頭城關帝廟(分香+謁祖,蘭博出處);行天宮源流
+//   二說(覺修宮/協天廟)以兩邊並存標存爭議;新竹天公壇承清末金闕殿系統(1909 合祀,
+//   總督府檔案);鹿港地藏王廟改採泉州對渡移民敘事(張志相2015 考證,四川天竺尊巖
+//   說時序不合)。
 //
 // 欄位說明:
 //   deity:            神明系統(與 temples.mainDeity 對應,外部源頭亦標註系統名)
@@ -323,6 +331,162 @@ const lineages = [
     note: "1929年日本淨土宗知恩院派僧人世良義成、田村智學創「淨土宗台北開教院」(善導寺前身),為日治時期淨土宗在台布教中心;1948年交李子寬居士,1954年核定今名",
     source: "台北善導寺官網沿革;維基百科善導寺條目",
     evidenceUrl: "https://www.shandaotemple.org.tw/sd2.htm"
+  },
+  {
+    id: 26,
+    deity: "齋教",
+    fromExternalName: "福建(齋教諸派渡台源,中國)",
+    toTempleId: 43,
+    relation: "法脈",
+    year: 1861,
+    status: "確定",
+    note: "先天派(萬全堂系)咸豐年間傳台:林金祖指派黃昌成自福建來台,1861年建報恩堂,為先天派在台祖堂",
+    source: "內政部臺灣宗教文化地圖(臺南報恩堂);維基百科齋教條",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=98"
+  },
+  {
+    id: 27,
+    deity: "齋教",
+    fromTempleId: 43,
+    toTempleId: 44,
+    relation: "分香",
+    year: 1879,
+    status: "確定",
+    note: "光緒5年(1879)先天派齋友黃昌泰、葉昌貞、古昌端等創建擇賢堂,為報恩堂分堂;捐款者多為美濃六堆客家人",
+    source: "內政部臺灣宗教文化地圖(臺南擇賢堂)",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=97"
+  },
+  {
+    id: 28,
+    deity: "齋教",
+    fromExternalName: "福建(齋教諸派渡台源,中國)",
+    toTempleId: 45,
+    relation: "法脈",
+    year: 1750,
+    status: "確定",
+    note: "金幢派翁永峰系;乾隆15年(1750)鍾、翁、吳、劉四位齋友自福建來台傳教,籌資二千銀元共建西華堂,全台唯一金幢派翁公支派齋堂",
+    source: "內政部臺灣宗教文化地圖(臺南西華堂)",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=96"
+  },
+  {
+    id: 29,
+    deity: "齋教",
+    fromExternalName: "福建(齋教諸派渡台源,中國)",
+    toTempleId: 46,
+    relation: "法脈",
+    year: 1837,
+    status: "確定",
+    note: "龍華派漢陽堂系;道光17年(1837)謝普爵等五人發起創建德化堂,謝普爵與其師盧普濤同闡齋教",
+    source: "文化部國家文化資產網(臺南德化堂沿革)",
+    evidenceUrl: "https://nchdb.boch.gov.tw/assets/overview/monument/19851127000051"
+  },
+  {
+    id: 30,
+    deity: "齋教",
+    fromExternalName: "福建(齋教諸派渡台源,中國)",
+    toTempleId: 47,
+    relation: "法脈",
+    year: null,
+    status: "待查",
+    note: "一說乾隆30年(1765)龍華派齋友建於安平,為漢陽堂在台最早據點;僅見維基齋教條(引張崑振《台灣的老齋堂》)",
+    source: "維基百科齋教條(引張崑振《台灣的老齋堂》,2003)",
+    evidenceUrl: "https://zh.wikipedia.org/wiki/%E9%BD%8B%E6%95%99"
+  },
+  {
+    id: 31,
+    deity: "齋教",
+    fromExternalName: "福建(齋教諸派渡台源,中國)",
+    toTempleId: 48,
+    relation: "法脈",
+    year: null,
+    status: "待查",
+    note: "一說乾隆年間金幢派樹德堂弟子來台南佈教所建慎德堂,有全台最早齋堂之稱;僅見維基齋教條,年代無確證",
+    source: "維基百科齋教條(引張崑振《台灣的老齋堂》,2003)",
+    evidenceUrl: "https://zh.wikipedia.org/wiki/%E9%BD%8B%E6%95%99"
+  },
+  {
+    id: 32,
+    deity: "文武大眾爺",
+    fromTempleId: 31,
+    toTempleId: 49,
+    relation: "分香",
+    year: 1912,
+    status: "確定",
+    note: "民國元年(1912)自新莊地藏庵分靈文武大眾爺至蘆洲;維基另載1934年擴建時自新莊地藏庵、八里大眾廟迎香火(兩說並陳)。新莊地藏庵兼祀地藏與文武大眾爺,此邊屬大眾爺系統",
+    source: "蘆洲區公所名勝古蹟頁;維基百科",
+    evidenceUrl: "https://www.luzhou.ntpc.gov.tw/home.jsp?id=8b767bd17dc29316"
+  },
+  {
+    id: 33,
+    deity: "阿彌陀佛",
+    fromExternalName: "蘇州靈巖山寺(印光大師道場,中國江蘇)",
+    toTempleId: 50,
+    relation: "法脈",
+    year: 1984,
+    status: "待查",
+    note: "妙蓮法師1941年受戒後於蘇州靈巖山寺參學,1949年赴香港閉關,1984年於埔里創台灣靈巖山寺,「頗有大陸靈巖山寺印祖之遺風」;屬宗風承繼,非剃度或皈依之直接師承",
+    source: "台灣佛教數位博物館《妙蓮法師》(資料源:靈巖山寺全球資訊網)",
+    evidenceUrl: "https://dlbs.liberal.ntu.edu.tw/museum/formosa/people/1-miao-lian.html"
+  },
+  {
+    id: 34,
+    deity: "關聖帝君",
+    fromTempleId: 32,
+    toTempleId: 51,
+    relation: "分香",
+    year: null,
+    status: "確定",
+    note: "頭城關帝廟開基二帝君由礁溪協天廟分靈;老二帝及關平太子、周倉將軍三尊以蘇澳山區樟木雕製;大正6年(1917)設廟(分靈確切年代未載)",
+    source: "蘭陽博物館電子報138期〈頭城寺廟分論-關帝廟〉(節錄自陳進傳等《人與神共構:頭城的寺廟信仰》)",
+    evidenceUrl: "https://www.lym.gov.tw/ch/collection/epaper/epaper-detail/Page1760000891313/"
+  },
+  {
+    id: 35,
+    deity: "關聖帝君",
+    fromTempleId: 51,
+    toTempleId: 32,
+    relation: "謁祖進香",
+    year: null,
+    status: "確定",
+    note: "頭城關帝廟每年正月11日回礁溪協天廟祖廟謁祖過火",
+    source: "蘭陽博物館電子報138期〈頭城寺廟分論-關帝廟〉(節錄自陳進傳等《人與神共構:頭城的寺廟信仰》)",
+    evidenceUrl: "https://www.lym.gov.tw/ch/collection/epaper/epaper-detail/Page1760000891313/"
+  },
+  {
+    id: 36,
+    deity: "關聖帝君",
+    fromTempleId: 32,
+    toTempleId: 15,
+    relation: "分香",
+    year: 1943,
+    status: "存爭議",
+    note: "行天宮源流二說並存:行天宮系統自述1943年覺修宮分靈五恩主(見另一邊);媒體與協天廟側記載稱行天宮承協天廟香火(維基協天廟條「或說」,PeoPo報導)。行天宮官網沿革頁未載協天廟",
+    source: "維基百科礁溪協天廟條;PeoPo公民新聞(2020)",
+    evidenceUrl: "https://zh.wikipedia.org/wiki/%E7%A4%81%E6%BA%AA%E5%8D%94%E5%A4%A9%E5%BB%9F"
+  },
+  {
+    id: 37,
+    deity: "玉皇大帝",
+    fromExternalName: "清末東門天公壇(新竹,1909年拆除)",
+    toTempleId: 36,
+    relation: "承繼",
+    year: 1909,
+    status: "確定",
+    note: "明治42年(1909)新竹市區改正,東門天公壇奉令拆除,神體合祀於客雅庄金闕殿(今新竹天公壇前身);清末新竹原有兩座天公廟,今廟承金闕殿系統",
+    source: "《臺灣總督府公文類纂》V01572/A018(溫國良編譯,臺灣文獻館2008),轉引自維基百科新竹天公壇條",
+    evidenceUrl: "https://zh.wikipedia.org/wiki/%E6%96%B0%E7%AB%B9%E5%A4%A9%E5%85%AC%E5%A3%87"
+  },
+  {
+    id: 38,
+    deity: "地藏菩薩",
+    fromExternalName: "泉州府城(漳泉渡台香火源,中國福建)",
+    toTempleId: 38,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "乾隆49年(1784)鹿港與泉州蚶江對渡後,漢人入居請來地藏王菩薩(文資調查沿革);廟存咸豐甲寅石爐為泉州石獅鋪錦黃姓移民所贈;惟「分香自泉州某地藏道場」查無文獻,「四川天竺尊巖」說時序與學界考證不合",
+    source: "文化部國家文化資產網(鹿港地藏王廟沿革,2022調查);張志相〈從地藏信仰源流看鹿港地藏王廟創建沿革與祀神〉(2015)",
+    evidenceUrl: "https://nchdb.boch.gov.tw/assets/overview/monument/19851127000023"
   }
 ];
 
@@ -402,5 +566,15 @@ const externalNodes = [
     name: "知恩院(日本淨土宗大本山,京都)",
     lat: 35.005622,
     lng: 135.783539
+  },
+  {
+    name: "福建(齋教諸派渡台源,中國)",
+    lat: 26.077495,
+    lng: 119.291822
+  },
+  {
+    name: "清末東門天公壇(新竹,1909年拆除)",
+    lat: 24.804211,
+    lng: 120.970256
   }
 ];
