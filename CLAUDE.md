@@ -41,8 +41,10 @@
 
 - 寫入中文內容後請掃描 U+FFFD 損壞字元(rg "\x{FFFD}"),發現立即修復;
   驗證器亦內建此檢查。
-- 待辦:玉皇/地藏的源流邊待策展;阿彌陀佛系統需宗派脈絡另案策展;
-  關聖帝君礁溪協天廟的分靈廟具體名單待查(目前僅通論「逾七百處」)。
+- 待辦:阿彌陀佛系統需宗派脈絡另案策展;新竹天公壇/新莊地藏庵/鹿港地藏王廟的
+  香火源流待查(僅收廟宇節點);蘆洲文武大眾廟 1912 年分靈自新莊地藏庵,
+  待「文武大眾爺」系統策展時收錄;關聖帝君礁溪協天廟的分靈廟具體名單待查
+  (目前僅通論「逾七百處」)。
 - UI 驗證工具:headless Chrome via Selenium(腳本 `data/raw/browser-smoke.py` 與
   `data/raw/journey-e2e.py`,gitignored,以 PMS 專案 `.blackvenv` 執行)。
 - repo 曾多次改名(現為 `Galen-Chu/TAIWAN-Pilgrimage`),本地 remote 已同步,勿改回舊 URL。
