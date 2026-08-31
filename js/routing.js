@@ -271,11 +271,6 @@ function initRouting(map, temples) {
   const clearButton = document.getElementById('clear-route');
   clearButton.addEventListener('click', clearRoute);
 
-  // Listen for language changes to update dropdowns
-  window.addEventListener('languageChanged', function() {
-    populateRouteDropdowns(temples);
-  });
-
   console.log('Routing initialized');
 }
 

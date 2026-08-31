@@ -146,11 +146,13 @@ function basePopupContent(t) {
  * 依神明系統與區域篩選底圖(與精選層同步)。
  * @param {array} systems - 選取的 canonical 神明(空陣列=全部)
  * @param {array} regions - 選取的區域(空陣列=全部)
+ * @param {boolean} [lodgingOnly] - 僅顯示有香客大樓者;底層登記資料無住宿欄位,勾選時全隱(D5)
  */
-function applyBaseFilter(systems, regions) {
+function applyBaseFilter(systems, regions, lodgingOnly) {
   if (!baseLayer.loaded || !baseLayer.cluster) return;
   const filtered = baseLayer.allMarkers.filter(function(m) {
     const t = m.baseData;
+    if (lodgingOnly) return false;
     const systemMatch =
       systems.length === 0 ||
       (t.deitySystems && t.deitySystems.some(s => systems.includes(s)));

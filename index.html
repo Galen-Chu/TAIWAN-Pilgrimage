@@ -27,7 +27,6 @@
     <header class="header">
         <div class="header-content">
             <h1 class="title" data-i18n="title">台灣進香地圖</h1>
-            <button id="lang-toggle" class="lang-toggle" data-i18n="langToggle">English</button>
         </div>
         <div class="search-container">
             <input type="text"
@@ -57,6 +56,11 @@
                 <h2 data-i18n="filterByRegion">依地區篩選</h2>
                 <div id="region-filters" class="filter-group">
                     <!-- Dynamically populated -->
+                </div>
+
+                <div class="filter-checkbox lodging-filter">
+                    <input type="checkbox" id="lodging-only-filter">
+                    <label for="lodging-only-filter">僅顯示有香客大樓（規劃進香住宿）</label>
                 </div>
 
                 <button id="clear-filters" class="btn-clear" data-i18n="clearFilters">清除篩選</button>
