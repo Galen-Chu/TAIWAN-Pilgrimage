@@ -18,6 +18,11 @@
 //   東港東隆宮(溫府千歲)僅收廟宇節點(源流為先民攜香火,無祖廟記載)。
 // 鸞堂系統(2026-08-31 v3.0):九份明聖宮、新店明聖宮分靈自礁溪協天廟(待查);
 //   志心堂/德顯堂/明聖堂/聖天堂未立案、無可定位資訊,暫不收錄。
+// v4.0(2026-09-01,D13):王爺深挖——大湖碧湖宮(1786 南鯤鯓最早分靈廠,官網載)+
+//   「大湖香宿蕭壢」謁祖+麻豆迎香祭(海埔池王府);清水祖師首批——安溪清水巖祖庭
+//   →艋舺/三峽/淡水/四鯤鯓/友蚋,艋舺↔淡水輪祀(新增 relation「輪祀」);
+//   玄天上帝首批——武當山→松柏嶺受天宮(1657)→受鎮宮/魚寮鎮南宮;台南北極殿、
+//   下營上帝廟為明鄭官祀脈絡節點(源流無單一邊可畫)。
 // 二輪補查(2026-08-31):礁溪協天廟→頭城關帝廟(分香+謁祖,蘭博出處);行天宮源流
 //   二說(覺修宮/協天廟)以兩邊並存標存爭議;新竹天公壇承清末金闕殿系統(1909 合祀,
 //   總督府檔案);鹿港地藏王廟改採泉州對渡移民敘事(張志相2015 考證,四川天竺尊巖
@@ -28,7 +33,7 @@
 //   fromTempleId:     起點廟宇(本資料集內的 temple id)——與 fromExternalName 恰好擇一
 //   fromExternalName: 起點為外部節點(中國祖廟、已消失古廟、歷史事件主體等)
 //   toTempleId:       終點廟宇(必須存在於 temples)
-//   relation:         "分香" | "謁祖進香" | "割火" | "遶境" | "承繼" | "法脈"
+//   relation:         "分香" | "謁祖進香" | "割火" | "遶境" | "承繼" | "法脈" | "輪祀"
 //   year:             事實年份(數字)或不詳(null)
 //   status:           "確定" | "存爭議" | "待查"
 //   source:           出處(策展原則:每筆源流都應可查證;「待補」者表示待填具體文獻)
@@ -564,6 +569,150 @@ const lineages = [
     note: "白砂崙萬福宮創建於乾隆60年(1795),區公所沿革明載「奉祀主神為五府千歲,源自南鯤鯓代天府」,並具列五王名諱",
     source: "高雄市茄萣區公所寺廟介紹(萬福宮)",
     evidenceUrl: "https://cieding.kcg.gov.tw/cp.aspx?n=D8098ECCC18BED49"
+  },
+  {
+    id: 45,
+    deity: "池府千歲",
+    fromTempleId: 11,
+    toTempleId: 58,
+    relation: "分香",
+    year: 1786,
+    status: "確定",
+    note: "南鯤鯓代天府諸分靈廟中最早者:乾隆51年(1786)分香池府千歲,嘉慶5年(1800)興築碧湖宮並增祀成五府;由此再分靈遍及高雄地區",
+    source: "南鯤鯓代天府官網「出巡與分靈_大湖香宿蕭壢」",
+    evidenceUrl: "https://nkstemple.org.tw/2012_web/2012_web_B2_5.htm"
+  },
+  {
+    id: 46,
+    deity: "池府千歲",
+    fromTempleId: 58,
+    toTempleId: 11,
+    relation: "謁祖進香",
+    year: null,
+    status: "確定",
+    note: "碧湖宮每年三月十五集合轄域分靈廟組逾萬人進香團回南鯤鯓謁祖,翌日步行北上夜宿蕭壢(今佳里),有「大湖香宿蕭壢」之諺;日治時期斷香,1987年恢復",
+    source: "南鯤鯓代天府官網「出巡與分靈_大湖香宿蕭壢」",
+    evidenceUrl: "https://nkstemple.org.tw/2012_web/2012_web_B2_5.htm"
+  },
+  {
+    id: 47,
+    deity: "五府千歲",
+    fromTempleId: 57,
+    toTempleId: 11,
+    relation: "謁祖進香",
+    year: null,
+    status: "確定",
+    note: "麻豆迎香祭:清初麻豆遭瘟,庄民至南鯤鯓迎李池吳三王遊境除瘟,從此每歲三月末日迎王,先駐駕海埔(「王爺埔」)一夜;1956年前後中斷,1987年海埔池王府建廟時恢復",
+    source: "南鯤鯓代天府官網「出巡與分靈_麻豆迎香祭」;維基百科海埔池王府條",
+    evidenceUrl: "https://nkstemple.org.tw/2012_web/2012_web_B2_2.htm"
+  },
+  {
+    id: 48,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 59,
+    relation: "分香",
+    year: 1787,
+    status: "確定",
+    note: "乾隆52年(1787)安溪移民建艋舺清水巖(1790落成),清水祖師自福建原籍的清水本巖分靈而來;直轄市定古蹟、「臺北三大廟門」之一",
+    source: "內政部臺灣宗教文化地圖(艋舺清水巖);文化部國家文化資產網",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/cultural/3_0011.aspx?i=12"
+  },
+  {
+    id: 49,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 61,
+    relation: "分香",
+    year: 1769,
+    status: "確定",
+    note: "安溪移民興建三峽長福巖(1767動工、1769落成),祖師自安溪清水巖迎來;1947年起李梅樹主持重建;直轄市定古蹟",
+    source: "內政部臺灣宗教文化地圖(三峽長福巖);維基百科",
+    evidenceUrl: "https://taiwangods.moi.gov.tw/html/landscape/1_0011.aspx?i=17"
+  },
+  {
+    id: 50,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 60,
+    relation: "分香",
+    year: null,
+    status: "存爭議",
+    note: "淡水清水巖「蓬萊老祖」相傳清道光年間來台(新北古蹟博物館),維基另作咸豐年間僧人攜來,官網記神尊出自安溪清水巖鬼湖洞——渡台年代與途徑各源不一;中法戰爭退法軍獲頌「功資拯濟」",
+    source: "新北市立淡水古蹟博物館;文化部國家文化資產網(新北市民俗登錄);維基百科",
+    evidenceUrl: "https://nchdb.boch.gov.tw/assets/overview/folklore/20130130000002"
+  },
+  {
+    id: 51,
+    deity: "清水祖師",
+    fromTempleId: 59,
+    toTempleId: 60,
+    relation: "輪祀",
+    year: null,
+    status: "確定",
+    note: "艋舺與淡水輪祀同一尊蓬萊老祖:農曆單月駐艋舺、雙月駐淡水;同治6年(1867)史料已有「祖師公艋淡一體」之載,1884年中法戰爭後立約之說;落鼻顯兆傳說由艋舺開始;登錄新北市民俗",
+    source: "內政部臺灣宗教文化地圖;文化部國家文化資產網(新北市民俗登錄理由)",
+    evidenceUrl: "https://nchdb.boch.gov.tw/assets/overview/folklore/20130130000002"
+  },
+  {
+    id: 52,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 62,
+    relation: "分香",
+    year: null,
+    status: "存爭議",
+    note: "四鯤鯓龍山寺明鄭時期創建,相傳全台最早主奉清水祖師之廟;祖師隨鄭軍泉州安溪軍民自安溪清水巖迎來;確切年份各源不一(1661/1662/1665)",
+    source: "四鯤鯓龍山寺官網;福建日報;維基百科",
+    evidenceUrl: "https://www.062620592.com.tw/1.html"
+  },
+  {
+    id: 53,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 63,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "友蚋礦業聚落安溪移民後裔集資建廟(1957興建、1962成廟、1987重建),主祀清水祖師(烏面/落鼻祖師);分靈途徑未載",
+    source: "國家文化記憶庫(友蚋清水岩祖師廟)",
+    evidenceUrl: "https://tcmb.culture.tw/zh-tw/detail?indexCode=Culture_Place&id=259171"
+  },
+  {
+    id: 54,
+    deity: "玄天上帝",
+    fromExternalName: "武當山天柱峰金殿(玄天上帝道場,中國湖北)",
+    toTempleId: 64,
+    relation: "分香",
+    year: 1657,
+    status: "待查",
+    note: "受天宮官網聖蹟源流稱明永曆11年(1657)福建漳浦移民攜玄天上帝香火(神符)渡臺(引1934年日方出版品);道光26年(1846)赴武當山祖廟割香,內殿設「武當英靈」石爐(廟方傳說+日治文獻性質)",
+    source: "受天宮官網聖蹟源流頁",
+    evidenceUrl: "https://www.shoutian.org.tw/?act=menuinfo&ml_id=20211129020"
+  },
+  {
+    id: 55,
+    deity: "玄天上帝",
+    fromTempleId: 64,
+    toTempleId: 66,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "日治時期阿里山林業工人自松柏嶺受天宮迎香火奉祀;1945年建廟、1948年落成(初名受森宮),1955年改名受鎮宮",
+    source: "維基百科阿里山受鎮宮條(引廟方沿革)",
+    evidenceUrl: "https://zh.wikipedia.org/zh-hant/%E9%98%BF%E9%87%8C%E5%B1%B1%E5%8F%97%E9%8E%AE%E5%AE%AE"
+  },
+  {
+    id: 56,
+    deity: "玄天上帝",
+    fromTempleId: 64,
+    toTempleId: 68,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "魚寮鎮南宮約1993-94年建廟,香火溯自松柏嶺受天宮,信徒組團回祖廟謁祖",
+    source: "雲林縣政府旅遊網(魚寮鎮南宮);雲林新聞網",
+    evidenceUrl: "https://tour.yunlin.gov.tw/main/modules/MySpace/index.php?xmlid=1037434"
   }
 ];
 
@@ -663,5 +812,15 @@ const externalNodes = [
     name: "五府千歲王船(相傳漂至南鯤鯓沙汕)",
     lat: 23.28,
     lng: 120.1
+  },
+  {
+    name: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    lat: 25.1271,
+    lng: 118.1139
+  },
+  {
+    name: "武當山天柱峰金殿(玄天上帝道場,中國湖北)",
+    lat: 32.4003,
+    lng: 111.004
   }
 ];
