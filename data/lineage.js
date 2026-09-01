@@ -26,6 +26,11 @@
 // v4.1(2026-09-01,D13 續充):單府王爺——北斗富美舘(蕭府王爺,源自泉郡富美宮,
 //   內政部明載,確定)、水裡港福順宮(朱李池三府開基祖廟,漳浦京仔社渡台說);
 //   南鯤鯓網絡深挖經查證暫無新的具名權威出處,已收 4 組關係維持。
+// v4.2(2026-09-01,D13 續充):富美系——麥寮光大寮聚寶宮(王船傳說,鄉公所記載)、
+//   梧棲富美宮、花壇富美宮;吳府——鹿港護安宮(獨立吳府系,1712 泉州恭迎);
+//   E1 待查項收錄——楠梓清福寺(咸豐石碑)、土城永福岩(1885)、魚池受福宮
+//   (受天宮系,登記歧異註明);范府獨立系統查無可考鏈,誠實不收;
+//   鹿港富美宮無可驗證網頁出處,俟有再收。
 // 二輪補查(2026-08-31):礁溪協天廟→頭城關帝廟(分香+謁祖,蘭博出處);行天宮源流
 //   二說(覺修宮/協天廟)以兩邊並存標存爭議;新竹天公壇承清末金闕殿系統(1909 合祀,
 //   總督府檔案);鹿港地藏王廟改採泉州對渡移民敘事(張志相2015 考證,四川天竺尊巖
@@ -740,6 +745,90 @@ const lineages = [
     note: "相傳明鄭天啟年間呂姓商人偕張、陳兩姓自漳浦縣京仔社恭請朱、李、池三府王爺渡台,於龍井麗水登陸(另說康熙40年漳州拓墾移民自唐山本廟恭請隨船);乾隆元年(1736)建廟,為全台朱李池三府開基祖廟(相傳性質)",
     source: "維基百科水裡港福順宮條(引廟方沿革)",
     evidenceUrl: "https://zh.wikipedia.org/wiki/%E6%B0%B4%E8%A3%A1%E6%B8%AF%E7%A6%8F%E9%A0%86%E5%AE%AE"
+  },
+  {
+    id: 59,
+    deity: "蕭府王爺",
+    fromExternalName: "泉郡富美宮(中國福建泉州)",
+    toTempleId: 71,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "麥寮鄉公所觀光導覽載其王船傳說:清領初年大帆船懸「奉玉旨敕令代天巡狩泉郡富美宮蕭府代巡」大旗靠岸,蕭太傅自泉州富美宮奉旨鎮守公代寮,原祀保生大帝讓位(傳說性質,官方頁記載)",
+    source: "麥寮鄉公所觀光導覽(光大寮聚寶宮);廟方沿革",
+    evidenceUrl: "https://www.mlvillage.gov.tw/form/Details.aspx?Parser=2,9,54,,,,48"
+  },
+  {
+    id: 60,
+    deity: "蕭府王爺",
+    fromExternalName: "泉郡富美宮(中國福建泉州)",
+    toTempleId: 72,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "梧棲富美宮先民自泉州富美宮恭請蕭府王爺香火渡台;1982年建廟、1988年入火安座(渡台年代不詳)",
+    source: "寺廟巡禮(引該宮印行《蕭府千歲簡介》)",
+    evidenceUrl: "https://o927603252.pixnet.net/blog/posts/16099496015"
+  },
+  {
+    id: 61,
+    deity: "蕭府王爺",
+    fromExternalName: "泉郡富美宮(中國福建泉州)",
+    toTempleId: 73,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "白沙坑富美宮乾隆年間先民自福建祖宮富美宮祈求分靈,迎神像隨船渡台;現廟建於1987年,保有北巡參香儀式",
+    source: "臺灣宗教與民俗文化平臺(白沙坑富美宮)",
+    evidenceUrl: "https://trfc.tw/temple/TWN008068"
+  },
+  {
+    id: 62,
+    deity: "吳府千歲",
+    fromExternalName: "泉州府城(漳泉渡台香火源,中國福建)",
+    toTempleId: 74,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "鹿港護安宮神像相傳康熙51年(1712)泉州移民恭迎至鹿港溪畔,乾隆52年(1787)草創;此為獨立吳府系統(五部鬚、專精醫科),非南鯤鯓三王吳孝寬系,廟方自稱吳府千歲爺開基祖廟",
+    source: "維基百科鹿港護安宮條",
+    evidenceUrl: "https://zh.wikipedia.org/zh-hant/%E9%B9%BF%E6%B8%AF%E8%AD%B7%E5%AE%89%E5%AE%AE"
+  },
+  {
+    id: 63,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 75,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "楠梓土庫清福寺存咸豐元年(1851)「塗庫庄祖師公」石碑,證清水祖師奉祀;分靈途徑未載",
+    source: "高雄市楠梓區公所(土庫清福寺)",
+    evidenceUrl: "https://nanzih.kcg.gov.tw/News_Content.aspx?n=5AEC225AD7EB28C6&sms=739B835C2E541437&s=9D7A53683A3AB5F4"
+  },
+  {
+    id: 64,
+    deity: "清水祖師",
+    fromExternalName: "安溪清水巖(清水祖師祖庭,中國福建泉州)",
+    toTempleId: 76,
+    relation: "分香",
+    year: 1885,
+    status: "待查",
+    note: "土城永福岩光緒11年(1885)廖玉山等七人發起建岩;香火相傳自福建安溪清水巖迎請(安溪移民守護神)",
+    source: "維基百科土城永福岩條;台灣清水祖師文化交流協會",
+    evidenceUrl: "https://zh.wikipedia.org/wiki/%E5%9C%9F%E5%9F%8E%E6%B0%B8%E7%A6%8F%E5%B2%A9"
+  },
+  {
+    id: 65,
+    deity: "玄天上帝",
+    fromTempleId: 64,
+    toTempleId: 77,
+    relation: "分香",
+    year: null,
+    status: "待查",
+    note: "魚池受福宮建廟逾百年,香火屬松柏嶺受天宮系統,信徒組團徒步回祖廟謁祖;登記主祀慚愧祖師與實祀玄天上帝歧異(待查)",
+    source: "中時新聞(受福宮徒步謁祖)",
+    evidenceUrl: "https://www.chinatimes.com/realtimenews/20201211004558-260421"
   }
 ];
 
