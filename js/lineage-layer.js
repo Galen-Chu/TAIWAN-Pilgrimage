@@ -1,6 +1,6 @@
 // 台灣進香地圖 — 源流連結圖層(v1.0)
 //
-// 資料:data/lineage.js(六大信仰系統+齋教+文武大眾爺網絡)+ externalNodes(外部源頭座標)
+// 資料:data/lineage.js(十二個信仰網絡:六大系統+齋教+文武大眾爺+王爺+清水祖師+玄天上帝)+ externalNodes(外部源頭座標)
 // 呈現:依 relation 畫線(分香實線/謁祖進香虛線/遶境粗點線/承繼紫虛線),
 //       狀態以透明度區分(確定 0.85 / 存爭議 0.55 / 待查 0.35),
 //       點擊線段顯示完整源流資訊(含出處);外部源頭以金色節點標示。
@@ -12,7 +12,8 @@ const RELATION_STYLES = {
   "割火": { color: "#C8102E", dashArray: "2 5", weight: 2 },
   "遶境": { color: "#F39C12", dashArray: "4 6", weight: 3 },
   "承繼": { color: "#7E57C2", dashArray: "8 4 2 4", weight: 2 },
-  "法脈": { color: "#00695C", dashArray: "6 3", weight: 2 }
+  "法脈": { color: "#00695C", dashArray: "6 3", weight: 2 },
+  "輪祀": { color: "#1565C0", dashArray: "2 4", weight: 2 }
 };
 
 const STATUS_OPACITY = {
