@@ -1232,5 +1232,41 @@ const temples = [
     lodging: null,
     landingType: null,
     landingNote: null
+  },
+  {
+    id: 69,
+    nameZh: "北斗富美舘",
+    nameEn: "Beidou Fumei Guan",
+    mainDeity: "蕭府王爺",
+    addressZh: "彰化縣北斗鎮光復路196號",
+    addressEn: "No. 196, Guangfu Rd., Beidou Township, Changhua County",
+    phone: null,
+    website: null,
+    lat: 23.8766003,
+    lng: 120.5242996,
+    region: "Central",
+    foundedYear: 1877,
+    history: "蕭府王爺為西漢太子太傅蕭望之(非瘟神),人稱「阿爺公」,信仰源自泉州富美宮;台灣王爺廟冠「富美」之名者多屬此系;光緒3年(1877)建於北斗街北門境,光緒7年(1881)遷建現址;彰化縣歷史建築,2018年修復入火安座",
+    lodging: null,
+    landingType: "分香子廟",
+    landingNote: "富美宮系在台代表廟之一(彰化縣歷史建築)"
+  },
+  {
+    id: 70,
+    nameZh: "水裡港福順宮",
+    nameEn: "Shuiligang Fushun Temple",
+    mainDeity: "朱府千歲",
+    addressZh: "臺中市龍井區麗水里三港路水裡港巷26號",
+    addressEn: "No. 26, Shuiligang Ln., San gang Rd., Longjing Dist., Taichung City",
+    phone: null,
+    website: null,
+    lat: 24.2010098,
+    lng: 120.4985962,
+    region: "Central",
+    foundedYear: 1736,
+    history: "主祀朱、李、池三府王爺(朱王領銜),為全台朱李池三府開基祖廟;相傳明鄭天啟年間呂姓商人偕張、陳兩姓自漳州府漳浦縣京仔社恭請三府王爺渡台,於龍井麗水登陸(另說康熙40年漳州拓墾移民恭請隨船);乾隆元年(1736)建廟,大肚下堡二十庄聯庄信仰中心;1990年重建安座時各地分靈王爺返宮",
+    lodging: null,
+    landingType: "祖廟",
+    landingNote: "全台朱李池三府王爺開基祖廟(1736);台中大肚溪口水裡港舊港聚落的信仰中心"
   }
 ];
