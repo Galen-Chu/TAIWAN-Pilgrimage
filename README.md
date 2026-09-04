@@ -1,4 +1,4 @@
-# 台灣進香地圖 | Taiwan Pilgrim Map
+# 台灣進香朝聖地圖 | Taiwan Pilgrim Map
 
 > 標記神靈在台灣的落地點，連結廟宇之間的源流，並記錄你自己的進香之路。
 
