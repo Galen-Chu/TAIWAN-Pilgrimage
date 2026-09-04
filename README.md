@@ -1,6 +1,7 @@
 # 台灣進香朝聖地圖 | Taiwan Pilgrim Map
 
 > 標記神靈在台灣的落地點，連結廟宇之間的源流，並記錄你自己的進香之路。
+
 本專案原為「台灣香客大樓地圖」，自 2026-08 起轉向新的核心概念：從「住宿定位」走向「信仰地圖」——以台灣廟宇為節點、以神靈源流為連結、以個人進香足跡為縱軸的互動地圖。
 
 *A bilingual (中文/English) interactive map. Formerly the "Taiwan Pilgrim Building Map", pivoting toward a belief-oriented map of temples, deity lineages, and personal pilgrimage journeys.*
