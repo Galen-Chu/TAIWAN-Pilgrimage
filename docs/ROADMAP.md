@@ -125,6 +125,34 @@
 - **O7. 分享與 Meta**:加 Open Graph 標籤與代表圖,讓地圖連結在通訊軟體分享時有預覽;規模極小。
 - 技術債清理(可隨手做):`.lang-toggle` 失效 CSS、`deities.js` 註冊表數量註記與實數同步。
 
+### O 系列執行歸檔(2026-10-07)
+
+> 五分支獨立開發後經 `integration/o-series-batch` 整合驗證,合併 main(`8e00acf`)上線;CI 首跑綠、Pages 約 40 秒部署、正式站 19 項驗收全過(Playwright 實測)。
+
+#### 交付總覽
+
+| 項目 | 分支 | 內容 | 驗證 |
+|------|------|------|------|
+| 快修批(含 O7) | `feat/o-quickfixes` | 更名「台灣進香朝聖地圖」三處同步(title/h1/i18n);OG+Twitter meta 與生成圖 `og-image.png`;Leaflet 三套件 vendor 自托管(`vendor/`,版本授權見其 README,零 unpkg);`.lang-toggle`/`.custom-marker` 死 CSS 清除;deities.js 王爺註記同步 | Playwright:meta/vendor/零錯誤 |
+| O1 CI | `feat/o1-ci-validate` | `.github/workflows/validate.yml`(push main+PR 跑 `validate-data.js`) | 首跑 success |
+| O2 圖例與網絡篩選 | `feat/o2-lineage-legend-filter` | 右下角可摺疊「源流圖例」(關係線依資料筆數動態生成+狀態透明度+外部源頭金點;行動預設摺疊);側欄「源流網絡」十五網絡篩選(勾選優先,未勾選跟隨神明篩選——源流線首次隨篩選同步);外部源頭節點僅在有可見邊時繪製 | E2E 9 斷言+正式站 7 項 |
+| O3 出處健檢 | `feat/o3-evidence-check` | `tools/check-evidence.js`(狀態碼/轉址域名漂移/關鍵字漂移 UTF-8·Big5·UTF-16LE 盡力解碼/動態渲染頁誠實標記/`--strict`) | 實跑 59 URL:55 OK/2 WARN/2 FAIL |
+| O6 資料季更 | `feat/o6-moi-refresh` | 12,422→12,425(+3 桃園/-0/175 欄位更新);DATA_SOURCES 版本紀錄制;圖層標籤改「約 1.2 萬筆」 | 逐筆 diff+驗證 0 錯誤 |
+
+#### 過程中的意外發現(已修)
+
+- **精選廟宇圖釘自 v1.0 起隱形**:`.marker-pin` 無基礎 CSS(渲染 30×0),且 icon 用了 FontAwesome 但全站未載入——快修批補水滴針樣式+🛕 emoji,正式站實測 42×42。根因為 v1.0 換 icon 結構時 CSS 未跟上、E2E 只驗功能不驗像素。
+- **O3 首跑抓到真死鏈**:lineage id 56(玄天上帝)出處 `tour.yunlin.gov.tw` 連線逾時(curl 同敗)——**待維護者換出處**;id 65 chinatimes 403 為擋 fetch 指紋(瀏覽器可開),人工複核即可。
+
+#### 遺留與後續
+
+- **O4 行動裝置實測**:待維護者實機(iOS Safari/Android Chrome)走打卡→足跡→匯出流程。
+- **O5 跨裝置同步**:維持暫緩(D4),有需求再重議。
+- **出處維護**:死鏈 id 56 換出處;其餘 2 WARN 人工複核;`check-evidence.js` 建議每季與 O6 重跑一起執行。
+- **每季 MOI 更新**:重跑 `import-moi-data.js`+diff+DATA_SOURCES ���本紀錄(流程本次已走通)。
+- E 系列內容擴充(E1 續充/E2/E4 等)依「前置決策建議」流程立項。
+- 技術債兩項(`.lang-toggle`/deities 註記)已隨快修批完成。
+
 ### 前置決策建議(立項 E 項前)
 
 1. **D12(建議):收錄範疇邊界**——定義「台灣進香地圖」收錄哪些宗教傳統與場所類型(民間信仰/佛教/道教/儒教/齋教/原民/歷史遺構/新興宗教/世界宗教),作為所有 E 項的總綱。
