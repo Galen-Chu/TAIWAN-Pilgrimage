@@ -36,7 +36,7 @@
 - [x] **資料儲存與備份**：localStorage 保存（重載持久），支援 JSON（完整備份）與 GPX（足跡路線）匯入匯出（無後端）
 - [x] **香客大樓資訊**：舊資料降階為廟宇屬性欄位（`lodging`），彈窗/詳情卡顯示，並提供「僅顯示有香客大樓」篩選器供規劃進香住宿
 - [x] **語言政策調整**：介面與資料中文為主（D6），移除全介面英文化切換，英文命名僅用於精選落地點（次要行顯示）
-- [x] **資料擴充**：匯入政府開放資料與策展資料（全量底層 12,422 筆已產生 `data/moi-temples.js`；座標經 2026-08-21 複校與 OSM 校正）
+- [x] **資料擴充**：匯入政府開放資料與策展資料（全量底層 12,425 筆已產生 `data/moi-temples.js`，2026-10-07 季更；座標經 2026-08-21 複校與 OSM 校正）
 
 決策詳情見 [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)；階段歸檔與擴充評估候選見 [docs/ROADMAP.md](docs/ROADMAP.md)。
 
@@ -71,7 +71,7 @@ pilgrim-map/
 │   ├── temples.js          # 精選廟宇節點（策展層，77 筆）
 │   ├── lineage.js          # 源流連結資料（十五個信仰網絡，65 筆）
 │   ├── deities.js          # 神明名稱註冊表（原名保留 + 系統歸類）
-│   └── moi-temples.js      # 全量廟宇底層（12,422 筆，generated）
+│   └── moi-temples.js      # 全量廟宇底層（12,425 筆，generated；2026-10-07 季更）
 ├── docs/
 │   ├── CONCEPT.md          # 核心概念說明
 │   ├── DATA_SOURCES.md     # 資料來源評估
