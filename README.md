@@ -79,7 +79,8 @@ pilgrim-map/
 │   └── ROADMAP.md          # 階段歸檔與擴充評估候選
 ├── tools/
 │   ├── import-moi-data.js  # 內政部 8203 匯入管線（node tools/import-moi-data.js）
-│   └── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
+│   ├── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
+│   └── check-evidence.js   # 源流出處連結健檢（node tools/check-evidence.js [--strict]）
 ├── vendor/                 # 第三方函式庫自托管（版本與授權見 vendor/README.md）
 │   ├── leaflet/
 │   ├── leaflet-routing-machine/

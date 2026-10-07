@@ -116,6 +116,7 @@
   - **▶ 執行狀態**:**已完成(2026-10-07)**——`.github/workflows/validate.yml`(push main + PR 觸發;驗證器零依賴,只需 checkout+node 22)。moi 重產 diff 檢查未含,俟 O6 立項時一併評估。
 - **O2. 源流圖層圖例與關係篩選**:圖層目前有六種關係線样式(分香/謁祖/割火/遶境/承繼/法脈/輪祀)與三級透明度(確定/存爭議/待查),但無圖例說明;且源流線不隨神明篩選同步。加圖例(L.control)與「依網絡篩選源流線」能大幅提升可讀性。
 - **O3. evidenceUrl 連結健檢工具**:65 個出處連結會因網站改版而失效(本專案已遇 kaitaimazutemple.com 域名易主、TNL 403 等案例);寫一支 `tools/check-evidence.js` 定期回報 HTTP 狀態與關鍵字漂移,維持「出處可查證」承諾。
+  - **▶ 執行狀態**:**已完成(2026-10-07)**——`tools/check-evidence.js`(Node ≥18,fetch 健檢 59 個唯一 URL;狀態碼/轉址域名漂移/關鍵字漂移盡力解碼 UTF-8/Big5/UTF-16LE;動態渲染頁誠實標「檢字不適用」;`--strict` 供 CI 用)。首次全量健檢:55 OK / 2 WARN / 2 FAIL——**FAIL:tour.yunlin.gov.tw 連線逾時(真死鏈,lineage id 56 玄天上帝,待換出處)、chinatimes 403(防爬蟲擋 fetch 指紋,瀏覽器可開,人工複核)**;WARN:dila 李炳南頁、蘆洲區公所頁(頁面活著、廟名寫法歧異,人工複核即可)。
 - **O4. 行動裝置實測與 UX 調校**:打卡→足跡→匯出流程僅做過桌面 headless E2E;實機(iOS Safari/Android Chrome)的 localStorage、檔案下載與地圖手勢值得實測一輪,並據此調校 responsive.css。
 - **O5. 個人足跡跨裝置**:D4 當時決策「暫不做後端」;若未來有跨裝置同步需求,可評估輕量方案(如 GitHub Gist OAuth、或極簡自架 API),屆時需回 REQUIREMENTS 重議 D4。
 - **O6. 資料更新週期**:內政部 8203 資料會更新;可每季重跑 `import-moi-data.js` 並 diff(注意註冊表擴充後的分類變化),於 DATA_SOURCES.md 記錄版本。
