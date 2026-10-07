@@ -18,6 +18,8 @@ const translations = {
     // Filters
     filterByDeity: "依神明篩選",
     filterByRegion: "依地區篩選",
+    filterByNetwork: "源流網絡",
+    networkFilterNote: "源流線:勾選網絡時以此為準;未勾選時跟隨神明篩選",
     clearFilters: "清除篩選",
 
     // Deity Types

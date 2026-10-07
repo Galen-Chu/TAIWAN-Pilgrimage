@@ -372,6 +372,9 @@ function initLayeredMap() {
   // 源流連結預設開啟(僅加入 control 不會自動顯示)
   lineageGroup.addTo(map);
 
+  // O2:源流圖例(右下角,可摺疊)
+  window.lineageLayerModule.addLegend(map);
+
   // v1.x:進香足跡路線圖層(預設開啟;空紀錄時為空圖層)
   const journeyLayer = window.journeyUI.getLayer();
   L.control.layers(null, { '進香足跡路線': journeyLayer }, { position: 'topright' }).addTo(map);
@@ -424,6 +427,11 @@ function filterMarkers(selectedDeities, selectedRegions, lodgingOnly) {
   // v1.0:全量底圖同步套用篩選(未載入時為 no-op)
   if (window.baseLayerModule) {
     window.baseLayerModule.applyFilter(selectedDeities, selectedRegions, lodgingOnly);
+  }
+
+  // O2:源流線同步套用篩選(未初始化時為 no-op;網絡勾選優先於神明篩選)
+  if (window.lineageLayerModule) {
+    window.lineageLayerModule.applyFilter();
   }
 
   console.log(`Filtered to ${filteredMarkers.length} markers`);

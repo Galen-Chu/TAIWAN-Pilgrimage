@@ -115,6 +115,7 @@
 - **O1. CI 自動驗證**:以 GitHub Actions 在 push/PR 時自動執行 `node tools/validate-data.js`(含 U+FFFD 檢查),把「驗證必跑」從紀律升級為管線強制;可再加 moi 重產後的 diff 檢查。價值高、規模小。
   - **▶ 執行狀態**:**已完成(2026-10-07)**——`.github/workflows/validate.yml`(push main + PR 觸發;驗證器零依賴,只需 checkout+node 22)。moi 重產 diff 檢查未含,俟 O6 立項時一併評估。
 - **O2. 源流圖層圖例與關係篩選**:圖層目前有六種關係線样式(分香/謁祖/割火/遶境/承繼/法脈/輪祀)與三級透明度(確定/存爭議/待查),但無圖例說明;且源流線不隨神明篩選同步。加圖例(L.control)與「依網絡篩選源流線」能大幅提升可讀性。
+  - **▶ 執行狀態**:**已完成(2026-10-07)**——①地圖右下角「源流圖例」控制項(關係線樣式依實際資料筆數動態生成+狀態透明度+外部源頭金點;可點標題摺疊,行動裝置預設摺疊);②側欄「源流網絡」篩選(十五網絡 checkbox,勾選時源流線以此為準,未勾選時跟隨神明篩選——齋教等無對應神明 checkbox 的網絡可由此顯示;外部源頭節點改為僅在有可見邊時繪製)。E2E(Playwright)9 斷言全過:全量 65 邊/媽祖同步 10/齋教網絡優先 6/清除還原 65/摺疊與行動裝置預設。
 - **O3. evidenceUrl 連結健檢工具**:65 個出處連結會因網站改版而失效(本專案已遇 kaitaimazutemple.com 域名易主、TNL 403 等案例);寫一支 `tools/check-evidence.js` 定期回報 HTTP 狀態與關鍵字漂移,維持「出處可查證」承諾。
   - **▶ 執行狀態**:**已完成(2026-10-07)**——`tools/check-evidence.js`(Node ≥18,fetch 健檢 59 個唯一 URL;狀態碼/轉址域名漂移/關鍵字漂移盡力解碼 UTF-8/Big5/UTF-16LE;動態渲染頁誠實標「檢字不適用」;`--strict` 供 CI 用)。首次全量健檢:55 OK / 2 WARN / 2 FAIL——**FAIL:tour.yunlin.gov.tw 連線逾時(真死鏈,lineage id 56 玄天上帝,待換出處)、chinatimes 403(防爬蟲擋 fetch 指紋,瀏覽器可開,人工複核)**;WARN:dila 李炳南頁、蘆洲區公所頁(頁面活著、廟名寫法歧異,人工複核即可)。
 - **O4. 行動裝置實測與 UX 調校**:打卡→足跡→匯出流程僅做過桌面 headless E2E;實機(iOS Safari/Android Chrome)的 localStorage、檔案下載與地圖手勢值得實測一輪,並據此調校 responsive.css。

@@ -778,3 +778,48 @@ body {
   cursor: pointer;
   font-size: 14px;
 }
+
+/* 源流網絡篩選說明(O2) */
+.network-filter-note {
+  font-size: 11px;
+  color: #888;
+  margin: 4px 0 10px 0;
+  line-height: 1.5;
+}
+
+/* 源流圖例(O2,地圖右下角可摺疊) */
+.lineage-legend {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-hover);
+  padding: 8px 10px;
+  font-size: 12px;
+  color: var(--text-color);
+  max-width: 190px;
+}
+.lineage-legend-header {
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 4px;
+}
+.lineage-legend-header::after {
+  content: '▾';
+  margin-left: 4px;
+  color: #999;
+}
+.lineage-legend.collapsed .lineage-legend-header { margin-bottom: 0; }
+.lineage-legend.collapsed .lineage-legend-header::after { content: '▸'; }
+.lineage-legend.collapsed .lineage-legend-body { display: none; }
+.lineage-legend-body .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+.lineage-legend-body .legend-row svg { flex: none; }
+.lineage-legend-body .legend-count { color: #999; }
+.lineage-legend-body .legend-sep {
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  margin: 5px 0;
+}
