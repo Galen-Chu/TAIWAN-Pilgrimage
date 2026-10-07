@@ -96,7 +96,7 @@ function createDeityIcon(deity, visited) {
   return L.divIcon({
     className: 'custom-div-icon',
     html: `<div class="marker-pin${visited ? ' visited' : ''}" style="background-color: ${color};">
-             <i class="fas fa-place-of-worship"></i>
+             <span class="marker-glyph">🛕</span>
            </div>`,
     iconSize: [30, 42],
     iconAnchor: [15, 42],

@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛩️</text></svg>">
-    <title>台灣進香地圖 | Taiwan Pilgrim Map</title>
+    <title>台灣進香朝聖地圖 | Taiwan Pilgrim Map</title>
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossorigin="" />
+    <!-- Open Graph / Twitter 分享預覽(O7) -->
+    <meta property="og:title" content="台灣進香朝聖地圖 | Taiwan Pilgrim Map" />
+    <meta property="og:description" content="標記神靈在台灣的落地點，連結廟宇之間的源流，並記錄你自己的進香之路。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://galen-chu.github.io/TAIWAN-Pilgrimage/" />
+    <meta property="og:image" content="https://galen-chu.github.io/TAIWAN-Pilgrimage/og-image.png" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="台灣進香朝聖地圖 | Taiwan Pilgrim Map" />
+    <meta name="twitter:description" content="標記神靈在台灣的落地點，連結廟宇之間的源流，並記錄你自己的進香之路。" />
+    <meta name="twitter:image" content="https://galen-chu.github.io/TAIWAN-Pilgrimage/og-image.png" />
+
+    <!-- Leaflet CSS(vendor 自托管,版本見 vendor/README.md) -->
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
 
     <!-- Leaflet Routing Machine CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="vendor/leaflet-routing-machine/leaflet-routing-machine.css" />
 
     <!-- Leaflet Marker Cluster CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="vendor/leaflet.markercluster/MarkerCluster.css" />
+    <link rel="stylesheet" href="vendor/leaflet.markercluster/MarkerCluster.Default.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -26,7 +36,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <h1 class="title" data-i18n="title">台灣進香地圖</h1>
+            <h1 class="title" data-i18n="title">台灣進香朝聖地圖</h1>
         </div>
         <div class="search-container">
             <input type="text"
@@ -143,16 +153,14 @@
     <script src="data/temples.js"></script>
     <script src="data/lineage.js"></script>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
+    <!-- Leaflet JS(vendor 自托管,版本見 vendor/README.md) -->
+    <script src="vendor/leaflet/leaflet.js"></script>
 
     <!-- Leaflet Routing Machine -->
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+    <script src="vendor/leaflet-routing-machine/leaflet-routing-machine.min.js"></script>
 
     <!-- Leaflet Marker Cluster -->
-    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
 
     <!-- App Modules -->
     <script src="js/i18n.js"></script>

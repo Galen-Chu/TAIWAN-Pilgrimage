@@ -10,7 +10,7 @@
 const translations = {
   zh: {
     // Header
-    title: "台灣進香地圖",
+    title: "台灣進香朝聖地圖",
 
     // Search
     searchPlaceholder: "搜尋廟宇名稱或地址...",

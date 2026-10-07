@@ -45,6 +45,7 @@
 - **前端**：HTML5、CSS3、JavaScript（ES6+）
 - **地圖**：Leaflet.js + OpenStreetMap 圖磚
 - **路線**：Leaflet Routing Machine + OSRM
+- **相依套件**：Leaflet 生態系自托管於 `vendor/`（不經 CDN，版本與授權見 `vendor/README.md`）
 - **無建置工具**：純靜態檔案
 
 ## 專案結構
@@ -59,13 +60,13 @@ pilgrim-map/
 │   ├── app.js              # 主控制器
 │   ├── map.js              # 地圖初始化、標記與圖層控制
 │   ├── base-layer.js       # 全量廟宇底圖（延遲載入 + 叢集）
-│   ├── lineage-layer.js    # 源流連結圖層（六大信仰系統）
+│   ├── lineage-layer.js    # 源流連結圖層（十五個信仰網絡）
 │   ├── journey.js          # 進香足跡儲存（localStorage + JSON/GPX）
-│   └── journey-ui.js       # 打卡表單、足跡圖層與側欄面板
+│   ├── journey-ui.js       # 打卡表單、足跡圖層與側欄面板
 │   ├── filters.js          # 篩選功能
 │   ├── search.js           # 搜尋功能
 │   ├── routing.js          # 路線規劃
-│   └── i18n.js             # 雙語切換
+│   └── i18n.js             # 介面文字（D6：中文為主）
 ├── data/
 │   ├── temples.js          # 精選廟宇節點（策展層，77 筆）
 │   ├── lineage.js          # 源流連結資料（十五個信仰網絡，65 筆）
@@ -79,6 +80,10 @@ pilgrim-map/
 ├── tools/
 │   ├── import-moi-data.js  # 內政部 8203 匯入管線（node tools/import-moi-data.js）
 │   └── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
+├── vendor/                 # 第三方函式庫自托管（版本與授權見 vendor/README.md）
+│   ├── leaflet/
+│   ├── leaflet-routing-machine/
+│   └── leaflet.markercluster/
 └── README.md
 ```
 
