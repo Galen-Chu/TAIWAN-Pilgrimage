@@ -33,7 +33,8 @@
 - **產生檔勿手改**:`data/moi-temples.js` 由 `tools/import-moi-data.js` 產生
   (data/raw/ 缺檔會自動下載內政部 8203 XML)。修改註冊表或來源後重新執行產生。
 - **驗證必跑**:任何資料變更後執行 `node tools/validate-data.js`,
-  必須 0 錯誤才能 commit。
+  必須 0 錯誤才能 commit;2026-10-07 起 GitHub Actions 亦於 push/PR
+  自動執行(`.github/workflows/validate.yml`)。
 - **新增策展資料**:廟宇加 `data/temples.js`(精選落地點才提供 nameEn/addressEn);
   源流加 `data/lineage.js`,每筆必填 `status`(確定/存爭議/待查)與 `source`,
   查證不到就誠實標「待補」,不得捏造出處。
@@ -42,6 +43,12 @@
 
 - 寫入中文內容後請掃描 U+FFFD 損壞字元(rg "\x{FFFD}"),發現立即修復;
   驗證器亦內建此檢查。
+- 待辦:lineage id 56(玄天上帝)出處 `tour.yunlin.gov.tw` 已死鏈
+  (2026-10-07 O3 健檢發現),待查替代出處;`node tools/check-evidence.js`
+  可隨時複查出處健康度(建議與每季 O6 資料更新一起跑)。
+- O 系列工程優化批已上線歸檔(2026-10-07,docs/ROADMAP.md「O 系列執行歸檔」):
+  CI 驗證/源流圖例與網絡篩選/出處健檢工具/vendor 自托管/更名同步/
+  MOI 12,425 筆;遺留 O4 行動裝置實測待實機執行。
 - 待辦:南鯤鯓分香網絡持續策展(已收 4 組關係,兩輪查證暫無新具名權威出處);
   富美系——鹿港富美宮(無可驗證網頁出處)、新竹富美宮(蕭潘郭三府組成歧異)
   俟有出處再收;范府千歲獨立系統查無可考鏈,待文獻;東港東隆宮溫府千歲源流
