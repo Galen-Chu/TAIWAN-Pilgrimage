@@ -20,7 +20,7 @@ const dataDir = path.join(__dirname, '..', 'data');
 
 function loadGlobal(filePath, varNames) {
   const src = fs.readFileSync(filePath, 'utf8');
-  if (src.includes('�')) {
+  if (src.includes(String.fromCharCode(0xFFFD))) {
     console.error(`[error] ${filePath} 含損壞字元(U+FFFD),請先修復`);
     process.exit(1);
   }
