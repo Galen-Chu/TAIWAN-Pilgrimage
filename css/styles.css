@@ -65,23 +65,6 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.lang-toggle {
-  background: var(--secondary-color);
-  color: var(--text-color);
-  border: none;
-  padding: 8px 16px;
-  border-radius: var(--border-radius);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.lang-toggle:hover {
-  background: #FFED4E;
-  transform: translateY(-2px);
-}
-
 /* Search */
 .search-container {
   position: relative;
@@ -611,19 +594,22 @@ body {
   text-decoration: underline;
 }
 
-/* Custom Marker Icons */
-.custom-marker {
-  background: var(--primary-color);
-  border: 3px solid var(--secondary-color);
-  border-radius: 50%;
+/* Custom Marker Icons(精選廟宇圖釘:神明色系水滴針,內嵌 🛕) */
+.marker-pin {
   width: 30px;
   height: 30px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  font-weight: 700;
-  font-size: 14px;
+}
+.marker-pin .marker-glyph {
+  transform: rotate(45deg);
+  font-size: 13px;
+  line-height: 1;
 }
 
 /* Leaflet Popup Customization */
@@ -791,4 +777,49 @@ body {
   color: #c0392b;
   cursor: pointer;
   font-size: 14px;
+}
+
+/* 源流網絡篩選說明(O2) */
+.network-filter-note {
+  font-size: 11px;
+  color: #888;
+  margin: 4px 0 10px 0;
+  line-height: 1.5;
+}
+
+/* 源流圖例(O2,地圖右下角可摺疊) */
+.lineage-legend {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-hover);
+  padding: 8px 10px;
+  font-size: 12px;
+  color: var(--text-color);
+  max-width: 190px;
+}
+.lineage-legend-header {
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 4px;
+}
+.lineage-legend-header::after {
+  content: '▾';
+  margin-left: 4px;
+  color: #999;
+}
+.lineage-legend.collapsed .lineage-legend-header { margin-bottom: 0; }
+.lineage-legend.collapsed .lineage-legend-header::after { content: '▸'; }
+.lineage-legend.collapsed .lineage-legend-body { display: none; }
+.lineage-legend-body .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+.lineage-legend-body .legend-row svg { flex: none; }
+.lineage-legend-body .legend-count { color: #999; }
+.lineage-legend-body .legend-sep {
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  margin: 5px 0;
 }

@@ -36,7 +36,7 @@
 - [x] **資料儲存與備份**：localStorage 保存（重載持久），支援 JSON（完整備份）與 GPX（足跡路線）匯入匯出（無後端）
 - [x] **香客大樓資訊**：舊資料降階為廟宇屬性欄位（`lodging`），彈窗/詳情卡顯示，並提供「僅顯示有香客大樓」篩選器供規劃進香住宿
 - [x] **語言政策調整**：介面與資料中文為主（D6），移除全介面英文化切換，英文命名僅用於精選落地點（次要行顯示）
-- [x] **資料擴充**：匯入政府開放資料與策展資料（全量底層 12,422 筆已產生 `data/moi-temples.js`；座標經 2026-08-21 複校與 OSM 校正）
+- [x] **資料擴充**：匯入政府開放資料與策展資料（全量底層 12,425 筆已產生 `data/moi-temples.js`，2026-10-07 季更；座標經 2026-08-21 複校與 OSM 校正）
 
 決策詳情見 [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)；階段歸檔與擴充評估候選見 [docs/ROADMAP.md](docs/ROADMAP.md)。
 
@@ -45,6 +45,7 @@
 - **前端**：HTML5、CSS3、JavaScript（ES6+）
 - **地圖**：Leaflet.js + OpenStreetMap 圖磚
 - **路線**：Leaflet Routing Machine + OSRM
+- **相依套件**：Leaflet 生態系自托管於 `vendor/`（不經 CDN，版本與授權見 `vendor/README.md`）
 - **無建置工具**：純靜態檔案
 
 ## 專案結構
@@ -59,18 +60,18 @@ pilgrim-map/
 │   ├── app.js              # 主控制器
 │   ├── map.js              # 地圖初始化、標記與圖層控制
 │   ├── base-layer.js       # 全量廟宇底圖（延遲載入 + 叢集）
-│   ├── lineage-layer.js    # 源流連結圖層（六大信仰系統）
+│   ├── lineage-layer.js    # 源流連結圖層（十五個信仰網絡）
 │   ├── journey.js          # 進香足跡儲存（localStorage + JSON/GPX）
-│   └── journey-ui.js       # 打卡表單、足跡圖層與側欄面板
+│   ├── journey-ui.js       # 打卡表單、足跡圖層與側欄面板
 │   ├── filters.js          # 篩選功能
 │   ├── search.js           # 搜尋功能
 │   ├── routing.js          # 路線規劃
-│   └── i18n.js             # 雙語切換
+│   └── i18n.js             # 介面文字（D6：中文為主）
 ├── data/
 │   ├── temples.js          # 精選廟宇節點（策展層，77 筆）
 │   ├── lineage.js          # 源流連結資料（十五個信仰網絡，65 筆）
 │   ├── deities.js          # 神明名稱註冊表（原名保留 + 系統歸類）
-│   └── moi-temples.js      # 全量廟宇底層（12,422 筆，generated）
+│   └── moi-temples.js      # 全量廟宇底層（12,425 筆，generated；2026-10-07 季更）
 ├── docs/
 │   ├── CONCEPT.md          # 核心概念說明
 │   ├── DATA_SOURCES.md     # 資料來源評估
@@ -78,7 +79,12 @@ pilgrim-map/
 │   └── ROADMAP.md          # 階段歸檔與擴充評估候選
 ├── tools/
 │   ├── import-moi-data.js  # 內政部 8203 匯入管線（node tools/import-moi-data.js）
-│   └── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
+│   ├── validate-data.js    # 資料驗證腳本（node tools/validate-data.js）
+│   └── check-evidence.js   # 源流出處連結健檢（node tools/check-evidence.js [--strict]）
+├── vendor/                 # 第三方函式庫自托管（版本與授權見 vendor/README.md）
+│   ├── leaflet/
+│   ├── leaflet-routing-machine/
+│   └── leaflet.markercluster/
 └── README.md
 ```
 

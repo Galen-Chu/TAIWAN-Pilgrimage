@@ -96,7 +96,7 @@ function createDeityIcon(deity, visited) {
   return L.divIcon({
     className: 'custom-div-icon',
     html: `<div class="marker-pin${visited ? ' visited' : ''}" style="background-color: ${color};">
-             <i class="fas fa-place-of-worship"></i>
+             <span class="marker-glyph">🛕</span>
            </div>`,
     iconSize: [30, 42],
     iconAnchor: [15, 42],
@@ -365,12 +365,15 @@ function initLayeredMap() {
 
   L.control.layers(null, {
     '精選廟宇': markerCluster,
-    '全量廟宇(12,422 筆,首次開啟需載入)': baseCluster,
+    '全量廟宇(約 1.2 萬筆,首次開啟需載入)': baseCluster,
     '源流連結': lineageGroup
   }, { collapsed: false, position: 'topright' }).addTo(map);
 
   // 源流連結預設開啟(僅加入 control 不會自動顯示)
   lineageGroup.addTo(map);
+
+  // O2:源流圖例(右下角,可摺疊)
+  window.lineageLayerModule.addLegend(map);
 
   // v1.x:進香足跡路線圖層(預設開啟;空紀錄時為空圖層)
   const journeyLayer = window.journeyUI.getLayer();
@@ -424,6 +427,11 @@ function filterMarkers(selectedDeities, selectedRegions, lodgingOnly) {
   // v1.0:全量底圖同步套用篩選(未載入時為 no-op)
   if (window.baseLayerModule) {
     window.baseLayerModule.applyFilter(selectedDeities, selectedRegions, lodgingOnly);
+  }
+
+  // O2:源流線同步套用篩選(未初始化時為 no-op;網絡勾選優先於神明篩選)
+  if (window.lineageLayerModule) {
+    window.lineageLayerModule.applyFilter();
   }
 
   console.log(`Filtered to ${filteredMarkers.length} markers`);
