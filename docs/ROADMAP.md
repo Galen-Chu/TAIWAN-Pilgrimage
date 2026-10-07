@@ -113,6 +113,7 @@
 > 與 E 系列(內容擴充)互補的工程面向候選;皆未承諾排程,立項時於 REQUIREMENTS 記錄。
 
 - **O1. CI 自動驗證**:以 GitHub Actions 在 push/PR 時自動執行 `node tools/validate-data.js`(含 U+FFFD 檢查),把「驗證必跑」從紀律升級為管線強制;可再加 moi 重產後的 diff 檢查。價值高、規模小。
+  - **▶ 執行狀態**:**已完成(2026-10-07)**——`.github/workflows/validate.yml`(push main + PR 觸發;驗證器零依賴,只需 checkout+node 22)。moi 重產 diff 檢查未含,俟 O6 立項時一併評估。
 - **O2. 源流圖層圖例與關係篩選**:圖層目前有六種關係線样式(分香/謁祖/割火/遶境/承繼/法脈/輪祀)與三級透明度(確定/存爭議/待查),但無圖例說明;且源流線不隨神明篩選同步。加圖例(L.control)與「依網絡篩選源流線」能大幅提升可讀性。
 - **O3. evidenceUrl 連結健檢工具**:65 個出處連結會因網站改版而失效(本專案已遇 kaitaimazutemple.com 域名易主、TNL 403 等案例);寫一支 `tools/check-evidence.js` 定期回報 HTTP 狀態與關鍵字漂移,維持「出處可查證」承諾。
 - **O4. 行動裝置實測與 UX 調校**:打卡→足跡→匯出流程僅做過桌面 headless E2E;實機(iOS Safari/Android Chrome)的 localStorage、檔案下載與地圖手勢值得實測一輪,並據此調校 responsive.css。

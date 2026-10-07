@@ -1,0 +1,24 @@
+name: Validate data
+
+# O1:把「驗證必跑」紀律升級為管線強制(含 U+FFFD 檢查)
+# 驗證器零外部依賴,僅需 node + repo 檔案
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate data
+        run: node tools/validate-data.js
