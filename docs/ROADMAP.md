@@ -118,6 +118,7 @@
 - **O4. 行動裝置實測與 UX 調校**:打卡→足跡→匯出流程僅做過桌面 headless E2E;實機(iOS Safari/Android Chrome)的 localStorage、檔案下載與地圖手勢值得實測一輪,並據此調校 responsive.css。
 - **O5. 個人足跡跨裝置**:D4 當時決策「暫不做後端」;若未來有跨裝置同步需求,可評估輕量方案(如 GitHub Gist OAuth、或極簡自架 API),屆時需回 REQUIREMENTS 重議 D4。
 - **O6. 資料更新週期**:內政部 8203 資料會更新;可每季重跑 `import-moi-data.js` 並 diff(注意註冊表擴充後的分類變化),於 DATA_SOURCES.md 記錄版本。
+  - **▶ 執行狀態**:**首次季更完成(2026-10-07)**——12,422 → 12,425 筆(+3 皆桃園/-0/175 筆欄位更新,詳 DATA_SOURCES.md 版本紀錄);驗證 0 錯誤;圖層標籤改「約 1.2 萬筆」避免每次季更過時。後續每季重跑同流程。
 - **O7. 分享與 Meta**:加 Open Graph 標籤與代表圖,讓地圖連結在通訊軟體分享時有預覽;規模極小。
 - 技術債清理(可隨手做):`.lang-toggle` 失效 CSS、`deities.js` 註冊表數量註記與實數同步。
 
