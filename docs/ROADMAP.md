@@ -149,7 +149,7 @@
 - **O4 行動裝置實測**:待維護者實機(iOS Safari/Android Chrome)走打卡→足跡→匯出流程。
 - **O5 跨裝置同步**:維持暫緩(D4),有需求再重議。
 - **出處維護**:死鏈 id 56 換出處;其餘 2 WARN 人工複核;`check-evidence.js` 建議每季與 O6 重跑一起執行。
-- **每季 MOI 更新**:重跑 `import-moi-data.js`+diff+DATA_SOURCES ���本紀錄(流程本次已走通)。
+- **每季 MOI 更新**:重跑 `import-moi-data.js`+diff+DATA_SOURCES 版本紀錄(流程本次已走通)。
 - E 系列內容擴充(E1 續充/E2/E4 等)依「前置決策建議」流程立項。
 - 技術債兩項(`.lang-toggle`/deities 註記)已隨快修批完成。
 
